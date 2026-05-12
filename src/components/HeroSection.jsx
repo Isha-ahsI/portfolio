@@ -1,7 +1,7 @@
 import React from 'react'
 import { Badge } from './ui/badge'
 import ShinyText from './ui/ShinyText'
-import LightRays from './ui/LightRays'
+// import LightRays from './ui/LightRays'
 import { TbCircleDotFilled } from "react-icons/tb";
 import { FaHandshake } from "react-icons/fa";
 import Avatar from "../assets/avatar.png"
@@ -9,9 +9,9 @@ import Avatar from "../assets/avatar.png"
 export const HeroSection = () => {
     return (
         <>
-            <section className='relative z-10 h-screen w-full overflow-hidden'>
+            <section className='relative flex min-h-[100svh] items-center justify-center overflow-hidden'>
                 <div className="absolute inset-0 z-0">
-                    <LightRays
+                    {/* <LightRays
                         raysOrigin="top-center"
                         raysColor="#6366f1"
                         raysSpeed={1}
@@ -25,22 +25,21 @@ export const HeroSection = () => {
                         noiseAmount={0.0}
                         distortion={0.0}
                         className="w-full"
-                    />
+                    /> */}
                 </div>
-                <div className='relative z-10 h-full'>
-                    <div className='md:grid md:grid-cols-12 items-center h-full'>
-                        <div className='md:col-span-7 flex flex-col justify-center mx-auto'>
-                            <Badge variant="primary" className="rounded-full bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary font-medium text-sm p-4 capitalize mb-4 shadow-[0_0_16px_rgba(var(--color-primary-rgb),0.35)]"> <TbCircleDotFilled className='me-1' />
-                                <ShinyText
-                                    text="Available for Work"
-                                    disabled={false}
-                                    speed={3}
-                                /></Badge>
-                            <h1 className='text-primary text-6xl font-bold leading-[65px]'>Hey, I'm <br /> <span className='bg-gradient-to-b from-primary-500 to-primary-300 bg-clip-text text-transparent underline underline-offset-8'>Isha Makvane</span></h1>
-                            <p className='text-light text-2xl  mt-4'>Web Designer</p>
-                            <p className='text-primary-100 text-lg mt-4'>Crafting modern, responsive, and visually engaging websites that deliver exceptional user experiences and elevate digital brands.</p>
-                            <button
-                                className="
+                <div className='relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center px-4 sm:px-8 lg:pt-40 pt-46 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(220px,380px)] gap-16'>
+                    <div className='flex flex-col justify-center lg:items-start items-center lg:text-start text-center lg:order-1 order-2'>
+                        <Badge variant="primary" className="rounded-full bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary font-medium text-sm p-4 capitalize mb-4 shadow-[0_0_16px_rgba(var(--color-primary-rgb),0.35)]"> <TbCircleDotFilled className='me-1' />
+                            <ShinyText
+                                text="Available for Work"
+                                disabled={false}
+                                speed={3}
+                            /></Badge>
+                        <h1 className='text-primary sm:text-6xl text-4xl font-bold lg:leading-[65px]'>Hey, I'm <br /> <span className='bg-gradient-to-b from-primary-500 to-primary-300 bg-clip-text text-transparent underline underline-offset-8'>Isha Makvane</span></h1>
+                        <p className='dark:text-light text-dark text-2xl mt-4'>Web Designer</p>
+                        <p className='dark:text-primary-100/75 text-dark/75 text-lg mt-4'>Crafting modern, responsive, and visually engaging websites that deliver exceptional user experiences and elevate digital brands.</p>
+                        <button
+                            className="
         relative overflow-hidden cursor-pointer
         flex items-center gap-2
         px-8 py-3
@@ -73,15 +72,15 @@ export const HeroSection = () => {
 
         hover:before:translate-x-[15em]
       "
-                            >
-                                <FaHandshake className='text-lg' /> Hire Me
-                            </button>                       </div>
-                        <div className='md:col-span-5 flex items-center justify-center'>
-                            <div className="relative h-75 w-75 rounded-lg bg-primary backdrop-blur-md shadow-[0_0_50px_rgba(var(--color-primary-rgb),0.5)]">
-                                <img src={Avatar} alt="avatar" className='origin-bottom relative z-20' />
-                                <div className="absolute z-10 top-0 left-0 rounded-lg h-full w-full border border-dashed border-dark/25 dark:border-light/25 bg-transparent -ml-6 -mt-6"></div>
-                                <div className="absolute z-0 h-full w-full bg-primary/10 rounded-lg backdrop-blur-sm top-0 left-0 ml-6 mt-6"></div>
-                            </div>
+                        >
+                            <FaHandshake className='text-lg' /> Hire Me
+                        </button>
+                    </div>
+                    <div className='flex items-center justify-center lg:order-2 order-1'>
+                        <div className="relative max-h-75 max-w-75 rounded-lg bg-primary backdrop-blur-md shadow-[0_0_50px_rgba(var(--color-primary-rgb),0.5)] lg:mx-0 mx-8">
+                            <img src={Avatar} alt="avatar" className='origin-bottom h-full w-full relative z-20' />
+                            <div className="absolute z-10 top-0 left-0 rounded-lg h-full w-full border border-dashed border-dark/50 dark:border-light/50 bg-transparent -ml-6 -mt-6"></div>
+                            <div className="absolute z-0 h-full w-full bg-primary/10 rounded-lg backdrop-blur-sm top-0 left-0 ml-6 mt-6"></div>
                         </div>
                     </div>
                 </div>

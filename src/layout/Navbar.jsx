@@ -28,8 +28,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className='lg:mx-46 md:mx-24 sm:mx-14 mx-8 fixed z-20 top-0 right-0 left-0 bg-primary-500/15 border border-primary-500/10 dark:bg-primary-300/15 dark:border-primary-300/10 backdrop-blur-2xl shadow-lg rounded-md my-10 px-8 py-6 shadow-2xl shadow-primary/15'>
-        <div className='flex items-center justify-between'>
+      <nav className=' fixed z-20 top-0 right-0 left-0 my-6 mx-8 sm:mx-6'>
+        <div className='max-w-6xl mx-auto flex items-center justify-between bg-primary-500/15 border border-primary-500/10 dark:bg-primary-300/15 dark:border-primary-300/10 backdrop-blur-2xl shadow-lg rounded-md shadow-2xl shadow-primary/15 px-8 py-6'>
           <div className='flex items-center'>
             {Data.navLinks.map((link) => {
               const IconLine = iconMap[link.iconLine];
@@ -52,7 +52,7 @@ export const Navbar = () => {
             })}
           </div>
           <div className='flex items-center space-x-6'>
-            <button onClick={() => setDarkMode(!darkMode)} className=" relative w-8 h-8 rounded-full bg-white/25 border border-white/25 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
+            <button onClick={() => setDarkMode(!darkMode)} className=" relative w-8 h-8 rounded-full bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
             >
               <HiMoon
                 className={` absolute text-primary transition-all duration-500 text-2xl ${darkMode ? "rotate-[360deg] scale-0" : "rotate-0 scale-100"} `}
