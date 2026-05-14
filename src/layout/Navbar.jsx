@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import Button from "../components/ui/button";
 import { Data } from "../data/data.js";
 import { AiOutlineHome, AiFillHome, AiOutlineProject, AiFillProject } from "react-icons/ai";
 import { RiUser3Line, RiUser3Fill } from "react-icons/ri";
@@ -28,9 +29,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className=' fixed z-20 top-0 right-0 left-0 my-6 mx-8 sm:mx-6'>
-        <div className='max-w-6xl mx-auto flex items-center justify-between bg-primary-500/15 border border-primary-500/10 dark:bg-primary-300/15 dark:border-primary-300/10 backdrop-blur-2xl shadow-lg rounded-md shadow-2xl shadow-primary/15 px-8 py-6'>
-          <div className='flex items-center'>
+      <nav className=' fixed z-50 top-0 right-0 left-0 my-6 mx-8 sm:mx-6'>
+        <div className='max-w-6xl mx-auto flex items-center justify-between bg-primary-500/15 border border-primary-500/10 dark:bg-primary-300/15 dark:border-primary-300/10 backdrop-blur-2xl shadow-lg rounded-md shadow-2xl shadow-primary/15 px-6 py-4'>
+          {/*leftside  navlinks  */}
+          <div className='lg:flex hidden items-center'>
             {Data.navLinks.map((link) => {
               const IconLine = iconMap[link.iconLine];
               const IconFill = iconMap[link.iconFill];
@@ -51,7 +53,13 @@ export const Navbar = () => {
               )
             })}
           </div>
-          <div className='flex items-center space-x-6'>
+          {/* middleside logo */}
+          <div className="lg:mx-auto me-auto">
+            <Link>Logo</Link>
+          </div>
+          {/* rightside */}
+          <div className='flex items-center sm:space-x-6 space-x-4'>
+            {/* light-dark button */}
             <button onClick={() => setDarkMode(!darkMode)} className=" relative w-8 h-8 rounded-full bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
             >
               <HiMoon
@@ -62,22 +70,17 @@ export const Navbar = () => {
                 className={` absolute text-primary transition-all duration-500 text-2xl ${darkMode ? "rotate-[360deg] scale-100" : "rotate-0 scale-0"} `}
               />
             </button>
-            <button
-              className="cursor-pointer bg-gradient-to-b from-primary-500 to-primary-600 shadow-[0px_4px_32px_0_rgba(var(--color-primary-rgb),.25)] px-8 py-3 rounded-xl text-white font-medium group transition-all duration-300 ease-linear hover:scale-90 hover:shadow-[0px_4px_32px_0_rgba(var(--color-primary-rgb),.75)]"
+            {/* resume download button */}
+            <Button
+              variant="primary"
+              useCustomSize
+              icon={<LiaDownloadSolid className="text-lg sm:ms-2" />}
+              className='sm:px-6 sm:py-3 px-2 py-2 md:text-base text-sm sm:rounded-xl rounded-full'
             >
-              <div className="relative overflow-hidden">
-                <p
-                  className="flex items-center gap-2 group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]"
-                >
-                  <span>Resume / CV</span> <span className="text-lg"><LiaDownloadSolid /></span>
-                </p>
-                <p
-                  className="flex items-center gap-2 absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]"
-                >
-                  <span>Resume / CV</span> <span className="text-lg"><LiaDownloadSolid /></span>
-                </p>
-              </div>
-            </button>
+              <span className="sm:block hidden">
+                Resume / CV
+              </span>
+            </Button>
           </div>
         </div>
       </nav>

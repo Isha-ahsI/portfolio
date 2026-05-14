@@ -1,15 +1,15 @@
 import React from 'react'
 import { Navbar } from './Navbar'
 import { ParticleBg } from '../components/ui/ParticleBg'
+import { Footer } from './Footer'
 
 export const Layout = ({ children }) => {
     return (
         <>
-            <div className='container mx-auto'>
-                <ParticleBg />
-                <Navbar />
-                {children}
-            </div>
+            <ParticleBg />
+            <Navbar />
+            {children}
+            <Footer />
         </>
     )
 }

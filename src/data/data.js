@@ -21,5 +21,17 @@ export const Data = {
             "iconLine": "projectLine",
             "iconFill": "projectFill"
         }
+    ],
+    "socialLinks": [
+        {
+            "id": 1,
+            "to": "/",
+            "icon": "github",
+        },
+        {
+            "id": 2,
+            "to": "/",
+            "icon": "linkedin",
+        }
     ]
 }
