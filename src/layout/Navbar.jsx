@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from "react-router-dom";
 import Button from "../components/ui/button";
+import { ScrollProgressBar } from "../components/ui/ScrollProgressBar";
 import { Data } from "../data/data.js";
 import { AiOutlineHome, AiFillHome, AiOutlineProject, AiFillProject } from "react-icons/ai";
 import { RiUser3Line, RiUser3Fill } from "react-icons/ri";
@@ -29,7 +30,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className=' fixed z-50 top-0 right-0 left-0 my-6 mx-8 sm:mx-6'>
+      <ScrollProgressBar />
+      <nav className='fixed z-50 top-0 right-0 left-0 my-6 mx-8 sm:mx-6'>
         <div className='max-w-6xl mx-auto flex items-center justify-between bg-primary-500/15 border border-primary-500/10 dark:bg-primary-300/15 dark:border-primary-300/10 backdrop-blur-2xl shadow-lg rounded-md shadow-2xl shadow-primary/15 px-6 py-4'>
           {/*leftside  navlinks  */}
           <div className='lg:flex hidden items-center'>

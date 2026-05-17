@@ -50,3 +50,51 @@ h5,
 h6 {
   @apply font-heading;
 }
+
+.animate-scrolldown {
+  animation: scrolldown 2s infinite;
+  display: block;
+}
+
+.animate-pulseFade {
+  animation: pulseFade 0.5s ease infinite alternate;
+}
+
+.animate-pulseFade-delay {
+  animation: pulseFade 0.5s ease infinite alternate;
+  animation-delay: 0.25s;
+}
+
+
+@keyframes scrolldown {
+  0% {
+    opacity: 0;
+    height: 6px;
+  }
+
+  40% {
+    opacity: 1;
+    height: 10px;
+  }
+
+  80% {
+    transform: translateY(20px);
+    opacity: 0;
+    height: 10px;
+  }
+
+  100% {
+    opacity: 0;
+    height: 3px;
+  }
+}
+
+@keyframes pulseFade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
