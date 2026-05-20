@@ -5,6 +5,17 @@ import KoffuuImg from '../assets/projects/koffuu.jpg';
 import Sivoci from '../assets/projects/sivoci.jpg';
 import Staffu from '../assets/projects/staffu.jpg';
 import Zeevra from '../assets/projects/zeevra.jpg';
+import {
+    FaHtml5,
+    FaCss3Alt,
+    FaJs,
+    FaBootstrap,
+    FaGulp,
+    FaReact,
+} from "react-icons/fa";
+import { SiReactbootstrap, SiSass } from "react-icons/si";
+import { RiTailwindCssFill } from "react-icons/ri";
+
 
 export const Data = {
     "navLinks": [
@@ -50,7 +61,24 @@ export const Data = {
             "image": CryzeoImg,
             "github": "/",
             "live": "/",
-            "type": "Web"
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "React Bootstrap",
+                    "icon": SiReactbootstrap,
+                    "color": "text-sky-500"
+                }
+            ],
         },
         {
             "id": 2,
@@ -59,7 +87,19 @@ export const Data = {
             "image": GolduuImg,
             "github": "/",
             "live": "/",
-            "type": "Web"
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": RiTailwindCssFill,
+                    "color": "text-sky-500"
+                }
+            ],
         },
         {
             "id": 3,
@@ -68,7 +108,34 @@ export const Data = {
             "image": InteriluImg,
             "github": "/",
             "live": "/",
-            "type": "Web"
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "HTML",
+                    "icon": FaHtml5,
+                    "color": "text-orange-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": FaJs,
+                    "color": "text-yellow-500",
+                },
+                {
+                    "name": "Gulp",
+                    "icon": FaGulp,
+                    "color": "text-orange-500"
+                },
+                {
+                    "name": "Sass",
+                    "icon": SiSass,
+                    "color": "text-fuchsia-500"
+                }
+            ],
         },
         {
             "id": 4,
@@ -77,7 +144,39 @@ export const Data = {
             "image": KoffuuImg,
             "github": "/",
             "live": "/",
-            "type": "Web"
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "React Bootstrap",
+                    "icon": SiReactbootstrap,
+                    "color": "text-sky-500"
+                },
+                {
+                    "name": "HTML",
+                    "icon": FaHtml5,
+                    "color": "text-orange-500",
+                },
+                {
+                    "name": "Sass",
+                    "icon": SiSass,
+                    "color": "text-fuchsia-500"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": FaJs,
+                    "color": "text-yellow-500",
+                },
+            ],
         },
         {
             "id": 5,
@@ -86,7 +185,40 @@ export const Data = {
             "image": Sivoci,
             "github": "/",
             "live": "/",
-            "type": "Web"
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "React Bootstrap",
+                    "icon": SiReactbootstrap,
+                    "color": "text-sky-500"
+                },
+                {
+                    "name": "Sass",
+                    "icon": SiSass,
+                    "color": "text-fuchsia-500"
+                },
+                {
+                    "name": "HTML",
+                    "icon": FaHtml5,
+                    "color": "text-orange-500",
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": FaJs,
+                    "color": "text-yellow-500",
+                },
+
+            ],
         },
         {
             "id": 6,
@@ -95,7 +227,34 @@ export const Data = {
             "image": Zeevra,
             "github": "/",
             "live": "/",
-            "type": "Web"
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "HTML",
+                    "icon": FaHtml5,
+                    "color": "text-orange-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "Sass",
+                    "icon": SiSass,
+                    "color": "text-fuchsia-500"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": FaJs,
+                    "color": "text-yellow-500",
+                },
+                {
+                    "name": "Gulp",
+                    "icon": FaGulp,
+                    "color": "text-orange-500"
+                }
+            ],
         },
         {
             "id": 7,
@@ -104,7 +263,34 @@ export const Data = {
             "image": Staffu,
             "github": "/",
             "live": "/",
-            "type": "Dashboard"
+            "type": "Dashboard",
+            "technologies": [
+                {
+                    "name": "HTML",
+                    "icon": FaHtml5,
+                    "color": "text-orange-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "Sass",
+                    "icon": SiSass,
+                    "color": "text-fuchsia-500"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": FaJs,
+                    "color": "text-yellow-500",
+                },
+                {
+                    "name": "Gulp",
+                    "icon": FaGulp,
+                    "color": "text-orange-500"
+                }
+            ],
         },
 
     ]
