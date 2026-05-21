@@ -56,91 +56,8 @@ export const Data = {
     "projectCard": [
         {
             "id": 1,
-            "title": "Cryzeo",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
-            "image": CryzeoImg,
-            "github": "/",
-            "live": "/",
-            "type": "Web",
-            "technologies": [
-                {
-                    "name": "React",
-                    "icon": FaReact,
-                    "color": "text-cyan-500",
-                },
-                {
-                    "name": "Bootstrap",
-                    "icon": FaBootstrap,
-                    "color": "text-purple-500"
-                },
-                {
-                    "name": "React Bootstrap",
-                    "icon": SiReactbootstrap,
-                    "color": "text-sky-500"
-                }
-            ],
-        },
-        {
-            "id": 2,
-            "title": "Golduu",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
-            "image": GolduuImg,
-            "github": "/",
-            "live": "/",
-            "type": "Web",
-            "technologies": [
-                {
-                    "name": "React",
-                    "icon": FaReact,
-                    "color": "text-cyan-500",
-                },
-                {
-                    "name": "Tailwind CSS",
-                    "icon": RiTailwindCssFill,
-                    "color": "text-sky-500"
-                }
-            ],
-        },
-        {
-            "id": 3,
-            "title": "Interilu",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
-            "image": InteriluImg,
-            "github": "/",
-            "live": "/",
-            "type": "Web",
-            "technologies": [
-                {
-                    "name": "HTML",
-                    "icon": FaHtml5,
-                    "color": "text-orange-500",
-                },
-                {
-                    "name": "Bootstrap",
-                    "icon": FaBootstrap,
-                    "color": "text-purple-500"
-                },
-                {
-                    "name": "JavaScript",
-                    "icon": FaJs,
-                    "color": "text-yellow-500",
-                },
-                {
-                    "name": "Gulp",
-                    "icon": FaGulp,
-                    "color": "text-orange-500"
-                },
-                {
-                    "name": "Sass",
-                    "icon": SiSass,
-                    "color": "text-fuchsia-500"
-                }
-            ],
-        },
-        {
-            "id": 4,
             "title": "Koffuu",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
+            "description": "A modern café website showcasing artisanal brews, cozy vibes, and seamless online ordering.",
             "image": KoffuuImg,
             "github": "/",
             "live": "/",
@@ -179,9 +96,9 @@ export const Data = {
             ],
         },
         {
-            "id": 5,
+            "id": 2,
             "title": "Sivoci",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
+            "description": "Business growth-focused web platform built with modern UI and performance-driven design.",
             "image": Sivoci,
             "github": "/",
             "live": "/",
@@ -221,9 +138,45 @@ export const Data = {
             ],
         },
         {
-            "id": 6,
+            "id": 3,
+            "title": "Interilu",
+            "description": "A modern home interior website showcasing elegant, functional, and personalized living space designs.",
+            "image": InteriluImg,
+            "github": "/",
+            "live": "/",
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "HTML",
+                    "icon": FaHtml5,
+                    "color": "text-orange-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": FaJs,
+                    "color": "text-yellow-500",
+                },
+                {
+                    "name": "Gulp",
+                    "icon": FaGulp,
+                    "color": "text-orange-500"
+                },
+                {
+                    "name": "Sass",
+                    "icon": SiSass,
+                    "color": "text-fuchsia-500"
+                }
+            ],
+        },
+        {
+            "id": 4,
             "title": "Zeevra",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
+            "description": "Modern multipurpose web platform for seamless business and digital experiences.",
             "image": Zeevra,
             "github": "/",
             "live": "/",
@@ -257,9 +210,59 @@ export const Data = {
             ],
         },
         {
+            "id": 5,
+            "title": "Cryzeo",
+            "description": "A secure and intuitive cryptocurrency platform for seamless digital asset tracking and trading.",
+            "image": CryzeoImg,
+            "github": "/",
+            "live": "/",
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Bootstrap",
+                    "icon": FaBootstrap,
+                    "color": "text-purple-500"
+                },
+                {
+                    "name": "React Bootstrap",
+                    "icon": SiReactbootstrap,
+                    "color": "text-sky-500"
+                }
+            ],
+        },
+        {
+            "id": 2,
+            "title": "Golduu",
+            "description": "A modern responsive jewelry portfolio website that beautifully showcases handcrafted designs and attracts customers.",
+            "image": GolduuImg,
+            "github": "/",
+            "live": "/",
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": RiTailwindCssFill,
+                    "color": "text-sky-500"
+                }
+            ],
+        },
+
+
+
+        {
             "id": 7,
             "title": "Staffu",
-            "description": "A responsive, Web3-ready landing page template built to highlight your tokenomics, roadmap, and community.",
+            "description": "Staffu is CRM Dashboard that simplifies staff, customer, and workflow management in one intuitive interface.",
             "image": Staffu,
             "github": "/",
             "live": "/",

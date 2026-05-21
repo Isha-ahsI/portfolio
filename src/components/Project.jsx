@@ -44,7 +44,7 @@ export const Project = () => {
                                 <Link to={project.live} className="absolute z-30 top-0 mt-2 me-2 flex items-center justify-center flex-col right-0 w-8 h-8 rounded-lg bg-light/50 border border-light/15 hover:border-primary backdrop-blur-sm hover:bg-primary text-dark group/view opacity-0 scale-0 group-hover/card:opacity-100 group-hover/card:scale-100 transition-all duration-300 ease-linear hover:text-light">
                                     <FiArrowUpRight className='transition-all duration-300 ease-linear rotate-0 group-hover/view:rotate-[45deg]' />
                                 </Link>
-                                <div className="absolute z-20 bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div className="absolute z-20 bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent"></div>
                                 <div className="absolute z-30 bottom-0 ms-3 mb-2 left-0">
                                     <div className="flex flex-wrap gap-2">
                                         {project.technologies.map((tech, index) => {
@@ -65,12 +65,14 @@ export const Project = () => {
                                 </div>
                             </div>
                             <CardHeader>
-                                <CardAction>
-                                    <Badge className="border-0 flex items-center gap-1">
-                                        {project.type}
-                                    </Badge>
-                                </CardAction>
-                                <CardTitle>{project.title}</CardTitle>
+                                <div className="flex items-center justify-between mb-2">
+                                    <CardTitle>{project.title}</CardTitle>
+                                    <CardAction>
+                                        <Badge className="border-0 flex items-center gap-1">
+                                            {project.type}
+                                        </Badge>
+                                    </CardAction>
+                                </div>
                                 <CardDescription>
                                     {project.description}
                                 </CardDescription>
@@ -86,11 +88,6 @@ export const Project = () => {
                                         <span>GitHub</span>
                                         <FiGithub className="text-[16px] transition-all duration-400 group-hover/github:text-primary" />
                                         <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 h-[1px] w-0 bg-primary dark:bg-primary transition-all duration-500 group-hover/github:w-full" />
-                                    </Link>
-                                    <Link to={project.live} className="relative group/live text-base inline-flex items-center gap-1 font-medium text-dark/50 dark:text-light/75 transition-all duration-300 hover:text-primary hover:tracking-wide">
-                                        <span>Live</span>
-                                        <FiEye className="text-[16px] transition-all duration-400 group-hover/live:text-primary" />
-                                        <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 h-[1px] w-0 bg-primary dark:bg-primary transition-all duration-500 group-hover/live:w-full" />
                                     </Link>
                                 </div>
                             </CardFooter>
