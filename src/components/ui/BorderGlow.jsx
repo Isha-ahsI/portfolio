@@ -115,13 +115,18 @@ const BorderGlow = ({
     setCursorAngle(angleStart);
 
     animateValue({ duration: 500, onUpdate: v => setEdgeProximity(v / 100) });
-    animateValue({ ease: easeInCubic, duration: 1500, end: 50, onUpdate: v => {
-      setCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
-    }});
-    animateValue({ ease: easeOutCubic, delay: 1500, duration: 2250, start: 50, end: 100, onUpdate: v => {
-      setCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
-    }});
-    animateValue({ ease: easeInCubic, delay: 2500, duration: 1500, start: 100, end: 0,
+    animateValue({
+      ease: easeInCubic, duration: 1500, end: 50, onUpdate: v => {
+        setCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
+      }
+    });
+    animateValue({
+      ease: easeOutCubic, delay: 1500, duration: 2250, start: 50, end: 100, onUpdate: v => {
+        setCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
+      }
+    });
+    animateValue({
+      ease: easeInCubic, delay: 2500, duration: 1500, start: 100, end: 0,
       onUpdate: v => setEdgeProximity(v / 100),
       onEnd: () => setSweepActive(false),
     });
@@ -157,7 +162,7 @@ const BorderGlow = ({
     >
       {/* mesh gradient border */}
       <div
-        className="absolute inset-0 rounded-[inherit] -z-[1]"
+        className="absolute inset-0 rounded-lg -z-[1]"
         style={{
           border: '1px solid transparent',
           background: [
@@ -174,7 +179,7 @@ const BorderGlow = ({
 
       {/* mesh gradient fill near edges */}
       <div
-        className="absolute inset-0 rounded-[inherit] -z-[1]"
+        className="absolute inset-0 rounded-lg -z-[1]"
         style={{
           border: '1px solid transparent',
           background: fillBg.join(', '),
@@ -206,7 +211,7 @@ const BorderGlow = ({
 
       {/* outer glow */}
       <span
-        className="absolute pointer-events-none z-[1] rounded-[inherit]"
+        className="absolute pointer-events-none z-[1] rounded-lg"
         style={{
           inset: `${-glowRadius}px`,
           maskImage: `conic-gradient(from ${angleDeg} at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%)`,
@@ -217,7 +222,7 @@ const BorderGlow = ({
         }}
       >
         <span
-          className="absolute rounded-[inherit]"
+          className="absolute rounded-lg"
           style={{
             inset: `${glowRadius}px`,
             boxShadow: buildBoxShadow(glowColor, glowIntensity),

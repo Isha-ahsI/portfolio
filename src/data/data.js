@@ -236,7 +236,7 @@ export const Data = {
             ],
         },
         {
-            "id": 2,
+            "id": 6,
             "title": "Golduu",
             "description": "A modern responsive jewelry portfolio website that beautifully showcases handcrafted designs and attracts customers.",
             "image": GolduuImg,
@@ -256,9 +256,6 @@ export const Data = {
                 }
             ],
         },
-
-
-
         {
             "id": 7,
             "title": "Staffu",
