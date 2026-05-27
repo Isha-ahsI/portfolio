@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import clsx from 'clsx';
 
 const variants = {
@@ -43,7 +43,7 @@ const sizes = {
     lg: "px-8 py-4 text-lg rounded-xl"
 };
 
-export default function Button({
+const Button = forwardRef(({
     children,
     icon,
     variant = "primary",
@@ -52,9 +52,10 @@ export default function Button({
     iconPosition = "right",
     useCustomSize = false,
     ...props
-}) {
+}, ref) => {
     return (
         <button
+            ref={ref}
             className={clsx(
                 `
         group
@@ -102,4 +103,6 @@ export default function Button({
             )}
         </button>
     );
-}
+});
+
+export default Button;

@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { SectionBadge } from './ui/SectionBadge';
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 export const HeroSection = () => {
     return (
         <>

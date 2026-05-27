@@ -49,7 +49,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content p-4 md:p-6 bg-light/25 dark:bg-dark/50 backdrop-blur-sm fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl  p-4 ring-1 ring-dark/15 dark:ring-light/20 duration-100 outline-none data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-4xl data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "group/alert-dialog-content p-4 md:p-6 bg-light/25 dark:bg-dark/50 backdrop-blur-sm fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl  p-4 ring-1 ring-dark/15 dark:ring-light/20 duration-100 outline-none data-[size=sm]:max-w-xs data-[size=default]:md:max-w-2xl data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props} />
@@ -110,7 +110,7 @@ function AlertDialogTitle({
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
       className={cn(
-        "font-heading text-base font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        "text-lg font-bold sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
         className
       )}
       {...props} />
@@ -134,27 +134,42 @@ function AlertDialogDescription({
 
 function AlertDialogAction({
   className,
-  variant = "default",
-  size = "default",
+  variant = "primary",
+  size = "md",
   ...props
 }) {
   return (
-    <Button variant={variant} size={size} asChild>
-      <AlertDialogPrimitive.Action data-slot="alert-dialog-action" className={cn(className)} {...props} />
-    </Button>
+    <AlertDialogPrimitive.Action data-slot="alert-dialog-action" asChild {...props}>
+      <Button variant={variant} size={size} className={cn(className)} />
+    </AlertDialogPrimitive.Action>
   );
 }
 
 function AlertDialogCancel({
   className,
   variant = "outline",
-  size = "default",
+  size = "md",
   ...props
 }) {
   return (
-    <Button variant={variant} size={size} asChild>
-      <AlertDialogPrimitive.Cancel data-slot="alert-dialog-cancel" className={cn(className)} {...props} />
-    </Button>
+    <AlertDialog>
+      <AlertDialogTrigger>Delete</AlertDialogTrigger>
+
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your item.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 

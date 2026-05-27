@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 // import BorderGlow from './ui/BorderGlow';
 import { SectionBadge } from './ui/SectionBadge';
-import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog";
-import { FiArrowUpRight, FiGithub, FiEye } from "react-icons/fi";
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger, AlertDialogDescription } from "./ui/alert-dialog";
+import { FiArrowUpRight, FiGithub, FiEye, FiX } from "react-icons/fi";
 import {
     Card,
     CardAction,
@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { Data } from '../data/data';
 
 export const Project = () => {
-    const [open, setOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
     return (
         <>
             <section className='relative overflow-hidden max-w-6xl mx-auto py-24 sm:px-6 sm:py-28 px-4'>
@@ -75,7 +75,7 @@ export const Project = () => {
                             </CardHeader>
                             <CardFooter>
                                 <div className="flex flex-wrap gap-4 items-center">
-                                    <Link onClick={() => setOpen(true)} className="relative group/details text-base inline-flex items-center gap-1 font-medium text-dark/75 dark:text-light/75 transition-all duration-300 hover:text-primary hover:tracking-wide">
+                                    <Link onClick={() => setSelectedProject(project)} className="relative group/details text-base inline-flex items-center gap-1 font-medium text-dark/75 dark:text-light/75 transition-all duration-300 hover:text-primary hover:tracking-wide">
                                         <span>See Details</span>
                                         <FiArrowUpRight className="text-[16px] transition-all duration-400 rotate-[-45deg] group-hover/details:rotate-0 group-hover/details:text-primary" />
                                         <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-primary dark:bg-primary transition-all duration-500 group-hover/details:w-full" />
@@ -91,15 +91,86 @@ export const Project = () => {
                     ))}
                 </div>
 
-                {/* custom dialog */}
-                <AlertDialog open={open} onOpenChange={setOpen}>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                        </AlertDialogHeader>
-                        <AlertDialogAction>Continue</AlertDialogAction>
+                {/* custom dialog more details*/}
+                <AlertDialog open={!!selectedProject} onOpenChange={(isOpen) => !isOpen && setSelectedProject(null)}>
+                    <AlertDialogContent className="p-4 sm:p-5 overflow-visible sm:max-w-lg max-w-md w-[calc(100%-2rem)] sm:w-full bg-white dark:bg-[#12121a] border border-dark/10 dark:border-white/10 rounded-[1.5rem] shadow-2xl">
+                        {selectedProject && (
+                            <>
+                                <button
+                                    onClick={() => setSelectedProject(null)}
+                                    className="absolute -top-4 right-0 z-50 flex h-8 w-8 items-center justify-center rounded-full bg-white dark:bg-[#1e1e28] border border-dark/10 dark:border-white/10 text-dark dark:text-white hover:bg-gray-100 dark:hover:bg-[#2a2a35] hover:text-primary dark:hover:text-primary transition-all duration-100 ease-in-out shadow-sm hover:ring-1 hover:ring-primary/25 group/close-btn cursor-pointer"
+                                >
+                                    <FiX size={16} className="transition-all duration-100 ease-linear group-hover/close-btn:rotate-90 group-hover/close-btn:text-primary" />
+                                </button>
+
+                                <div className="flex flex-col w-full">
+                                    <div className="w-full mb-5">
+                                        <img
+                                            src={selectedProject.image}
+                                            alt={selectedProject.title}
+                                            className="w-full h-full object-cover rounded-2xl shadow-sm"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col text-left px-1">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <AlertDialogTitle className="text-2xl font-bold text-primary">
+                                                {selectedProject.title}
+                                            </AlertDialogTitle>
+                                            <Badge className="border-0 flex items-center gap-1">
+                                                {selectedProject.type}
+                                            </Badge>
+                                        </div>
+
+                                        <AlertDialogDescription className="text-[14px] leading-relaxed text-dark/70 dark:text-white/70 mb-4">
+                                            {selectedProject.description}
+                                        </AlertDialogDescription>
+
+                                        <div className="flex flex-wrap gap-2 mb-6">
+                                            {selectedProject.technologies.map((tech, index) => {
+                                                const Icon = tech.icon;
+
+                                                return (
+                                                    <Badge
+                                                        key={index}
+                                                        variant="secondary"
+                                                        className="flex items-center gap-1 bg-dark/10 dark:bg-white/25 text-dark dark:text-white border border-dark/25 dark:border-white/25"
+                                                    >
+                                                        <Icon className={tech.color} />
+                                                        {tech.name}
+                                                    </Badge>
+                                                );
+                                            })}
+                                        </div>
+
+                                        <div className="flex flex-col sm:flex-row gap-3 w-full mt-1">
+                                            <Link
+                                                to={selectedProject.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 w-full inline-flex items-center justify-center gap-1 rounded-lg text-base font-medium py-2 px-4 bg-white text-black border border-black transition-colors hover:bg-gray-100 dark:border dark:border-white"
+                                            >
+                                                <FiGithub size={18} /> GitHub
+                                            </Link>
+                                            <Link
+                                                to={selectedProject.live}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 w-full inline-flex items-center justify-center gap-1 rounded-lg text-base font-medium py-2 px-4 bg-primary text-white transition-colors hover:bg-primary/90 group/live"
+                                            >
+                                                Live demo <FiArrowUpRight size={18} className="transition-all duration-150 ease-linear group-hover/live:rotate-45" />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </AlertDialogContent>
                 </AlertDialog>
+
+
+
+                
             </section>
         </>
     )

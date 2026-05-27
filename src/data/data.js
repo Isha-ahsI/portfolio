@@ -59,7 +59,7 @@ export const Data = {
             "title": "Koffuu",
             "description": "A modern café website showcasing artisanal brews, cozy vibes, and seamless online ordering.",
             "image": KoffuuImg,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Web",
             "technologies": [
@@ -100,7 +100,7 @@ export const Data = {
             "title": "Sivoci",
             "description": "Business growth-focused web platform built with modern UI and performance-driven design.",
             "image": Sivoci,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Web",
             "technologies": [
@@ -142,7 +142,7 @@ export const Data = {
             "title": "Interilu",
             "description": "A modern home interior website showcasing elegant, functional, and personalized living space designs.",
             "image": InteriluImg,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Web",
             "technologies": [
@@ -178,7 +178,7 @@ export const Data = {
             "title": "Zeevra",
             "description": "Modern multipurpose web platform for seamless business and digital experiences.",
             "image": Zeevra,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Web",
             "technologies": [
@@ -214,7 +214,7 @@ export const Data = {
             "title": "Cryzeo",
             "description": "A secure and intuitive cryptocurrency platform for seamless digital asset tracking and trading.",
             "image": CryzeoImg,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Web",
             "technologies": [
@@ -240,7 +240,7 @@ export const Data = {
             "title": "Golduu",
             "description": "A modern responsive jewelry portfolio website that beautifully showcases handcrafted designs and attracts customers.",
             "image": GolduuImg,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Web",
             "technologies": [
@@ -261,7 +261,7 @@ export const Data = {
             "title": "Staffu",
             "description": "Staffu is CRM Dashboard that simplifies staff, customer, and workflow management in one intuitive interface.",
             "image": Staffu,
-            "github": "/",
+            "github": "https://github.com/",
             "live": "/",
             "type": "Dashboard",
             "technologies": [
