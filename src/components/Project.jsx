@@ -17,6 +17,7 @@ import { Data } from '../data/data';
 
 export const Project = () => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [previewOpen, setPreviewOpen] = useState(false);
     return (
         <>
             <section className='relative overflow-hidden max-w-6xl mx-auto py-24 sm:px-6 sm:py-28 px-4'>
@@ -37,7 +38,7 @@ export const Project = () => {
                                     alt={project.title}
                                     className="relative z-10 w-full h-full object-cover group-hover/card:scale-105 transition-all duration-300 ease-in"
                                 />
-                                <Link to={project.live} className="absolute z-30 top-0 mt-2 me-2 flex items-center justify-center flex-col right-0 w-8 h-8 rounded-lg bg-light/50 border border-light/15 hover:border-primary backdrop-blur-sm hover:bg-primary text-dark group/view opacity-0 scale-0 group-hover/card:opacity-100 group-hover/card:scale-100 transition-all duration-300 ease-linear hover:text-light">
+                                <Link onClick={() => setPreviewOpen(true)} className="absolute z-30 top-0 mt-2 me-2 flex items-center justify-center flex-col right-0 w-8 h-8 rounded-lg bg-light/50 border border-light/15 hover:border-primary backdrop-blur-sm hover:bg-primary text-dark group/view opacity-0 scale-0 group-hover/card:opacity-100 group-hover/card:scale-100 transition-all duration-300 ease-linear hover:text-light">
                                     <FiArrowUpRight className='transition-all duration-300 ease-linear rotate-0 group-hover/view:rotate-[45deg]' />
                                 </Link>
                                 <div className="absolute z-20 -bottom-24 opacity-0 group-hover/card:opacity-100 group-hover/card:bottom-0 transition-all duration-300 ease-linear left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent "></div>
@@ -80,7 +81,7 @@ export const Project = () => {
                                         <FiArrowUpRight className="text-[16px] transition-all duration-400 rotate-[-45deg] group-hover/details:rotate-0 group-hover/details:text-primary" />
                                         <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-primary dark:bg-primary transition-all duration-500 group-hover/details:w-full" />
                                     </Link>
-                                    <Link to={project.github} className="relative group/github text-base inline-flex items-center gap-1 font-medium text-dark/75 dark:text-light/75 transition-all duration-300 hover:text-primary hover:tracking-wide">
+                                    <Link to={project.github}  target="_blank" rel="noopener noreferrer" className="relative group/github text-base inline-flex items-center gap-1 font-medium text-dark/75 dark:text-light/75 transition-all duration-300 hover:text-primary hover:tracking-wide">
                                         <span>GitHub</span>
                                         <FiGithub className="text-[16px] transition-all duration-400 group-hover/github:text-primary" />
                                         <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 h-[1px] w-0 bg-primary dark:bg-primary transition-all duration-500 group-hover/github:w-full" />
@@ -153,9 +154,7 @@ export const Project = () => {
                                                 <FiGithub size={18} /> GitHub
                                             </Link>
                                             <Link
-                                                to={selectedProject.live}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                                onClick={() => setPreviewOpen(true)}
                                                 className="flex-1 w-full inline-flex items-center justify-center gap-1 rounded-lg text-base font-medium py-2 px-4 bg-primary text-white transition-colors hover:bg-primary/90 group/live"
                                             >
                                                 Live demo <FiArrowUpRight size={18} className="transition-all duration-150 ease-linear group-hover/live:rotate-45" />
@@ -168,9 +167,19 @@ export const Project = () => {
                     </AlertDialogContent>
                 </AlertDialog>
 
-
-
-                
+                {/* custom dialog live project*/}
+                <AlertDialog  open={previewOpen} onOpenChange={setPreviewOpen}>
+                    <AlertDialogContent className="p-0 overflow-hidden w-full h-full max-w-4xl">
+                    {/* <AlertDialogTrigger asChild>
+                        <button className="hidden">Open Live Project</button>
+                    </AlertDialogTrigger> */}
+                        <iframe
+                            src={selectedProject ? selectedProject.live : ''}
+                            title={selectedProject ? selectedProject.title : 'Live Project'}
+                            className="w-full h-[75vh] border-0 rounded-xl"
+                        />
+                    </AlertDialogContent>
+                </AlertDialog>
             </section>
         </>
     )

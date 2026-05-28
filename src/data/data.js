@@ -60,7 +60,7 @@ export const Data = {
             "description": "A modern café website showcasing artisanal brews, cozy vibes, and seamless online ordering.",
             "image": KoffuuImg,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://koffuu.vercel.app/",
             "type": "Web",
             "technologies": [
                 {
@@ -101,7 +101,7 @@ export const Data = {
             "description": "Business growth-focused web platform built with modern UI and performance-driven design.",
             "image": Sivoci,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://sivoci.vercel.app/",
             "type": "Web",
             "technologies": [
                 {
@@ -143,7 +143,7 @@ export const Data = {
             "description": "A modern home interior website showcasing elegant, functional, and personalized living space designs.",
             "image": InteriluImg,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://interillu.vercel.app/",
             "type": "Web",
             "technologies": [
                 {
@@ -179,7 +179,7 @@ export const Data = {
             "description": "Modern multipurpose web platform for seamless business and digital experiences.",
             "image": Zeevra,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://zeevra-gilt.vercel.app/",
             "type": "Web",
             "technologies": [
                 {
@@ -215,7 +215,7 @@ export const Data = {
             "description": "A secure and intuitive cryptocurrency platform for seamless digital asset tracking and trading.",
             "image": CryzeoImg,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://cryzeo.vercel.app/",
             "type": "Web",
             "technologies": [
                 {
@@ -241,7 +241,7 @@ export const Data = {
             "description": "A modern responsive jewelry portfolio website that beautifully showcases handcrafted designs and attracts customers.",
             "image": GolduuImg,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://golduu.vercel.app/",
             "type": "Web",
             "technologies": [
                 {
@@ -262,7 +262,7 @@ export const Data = {
             "description": "Staffu is CRM Dashboard that simplifies staff, customer, and workflow management in one intuitive interface.",
             "image": Staffu,
             "github": "https://github.com/",
-            "live": "/",
+            "live": "https://staffu.vercel.app/",
             "type": "Dashboard",
             "technologies": [
                 {
