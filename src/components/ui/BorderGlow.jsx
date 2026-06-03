@@ -162,7 +162,7 @@ const BorderGlow = ({
     >
       {/* mesh gradient border */}
       <div
-        className="absolute inset-0 rounded-lg -z-[1]"
+        className="absolute inset-0 rounded-2xl -z-[1]"
         style={{
           border: '1px solid transparent',
           background: [
@@ -179,7 +179,7 @@ const BorderGlow = ({
 
       {/* mesh gradient fill near edges */}
       <div
-        className="absolute inset-0 rounded-lg -z-[1]"
+        className="absolute inset-0 rounded-2xl -z-[1]"
         style={{
           border: '1px solid transparent',
           background: fillBg.join(', '),
@@ -211,7 +211,7 @@ const BorderGlow = ({
 
       {/* outer glow */}
       <span
-        className="absolute pointer-events-none z-[1] rounded-lg"
+        className="absolute pointer-events-none z-[1] rounded-2xl"
         style={{
           inset: `${-glowRadius}px`,
           maskImage: `conic-gradient(from ${angleDeg} at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%)`,
@@ -222,7 +222,7 @@ const BorderGlow = ({
         }}
       >
         <span
-          className="absolute rounded-lg"
+          className="absolute rounded-2xl"
           style={{
             inset: `${glowRadius}px`,
             boxShadow: buildBoxShadow(glowColor, glowIntensity),

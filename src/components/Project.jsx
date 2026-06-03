@@ -31,7 +31,7 @@ export const Project = () => {
                 {/* project cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
                     {Data.projectCard.map((project) => (
-                        <Card key={project.id} className="relative w-full md:max-w-md pt-0 h-full overflow-hidden group/card">
+                        <Card key={project.id} className="relative w-full md:max-w-md pt-0 h-full overflow-hidden group/card transition-all duration-300 ease-in">
                             <div className="relative overflow-hidden z-20 w-full h-full">
                                 <img
                                     src={project.image}
