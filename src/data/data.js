@@ -293,5 +293,24 @@ export const Data = {
             ],
         },
 
+    ],
+    "stats": [
+        {
+            "id": 1,
+            "title": "Years of Exp.",
+            "value": "1"
+        },
+        {
+            "id": 2,
+            "title": "Projects",
+            "value": "7",
+            "suffix": "+"
+        },
+        {
+            "id": 3,
+            "title": "Dedicated",
+            "value": "100",
+            "suffix": "%"
+        }
     ]
 }

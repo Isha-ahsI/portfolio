@@ -12,6 +12,15 @@ const variants = {
     hover:shadow-[0px_4px_32px_0_rgba(var(--color-primary-rgb),.75)]
   `,
 
+    light: `
+    cursor-pointer
+    bg-white
+    text-primary
+    border border-white/20
+    shadow-[0px_4px_32px_0_rgba(255,255,255,.25)]
+    hover:shadow-[0px_4px_32px_0_rgba(255,255,255,.5)]
+  `,
+
     outline: `
     relative overflow-hidden cursor-pointer
     border-2 border-primary
@@ -72,7 +81,7 @@ const Button = forwardRef(({
             )}
             {...props}
         >
-            {variant === "primary" ? (
+            {(variant === "primary" || variant === "light") ? (
                 <div className="relative overflow-hidden">
                     <div className="flex items-center group-hover:-translate-y-7 transition-all duration-150 ease-in-out">
 

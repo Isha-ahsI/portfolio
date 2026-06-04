@@ -23,7 +23,7 @@ export const HeroSection = () => {
                 <div className='relative z-30 mx-auto grid w-full max-w-6xl grid-cols-1 items-center px-4 sm:px-8 lg:pt-24 pt-34 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(220px,380px)] gap-16'>
                     {/* herosection content */}
                     <div className='flex flex-col justify-center lg:items-start items-center lg:text-start text-center'>
-                        <SectionBadge text="Available for Work" />
+                        <SectionBadge text="Available for Work" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
                         <h1 className='text-primary sm:text-6xl text-4xl font-bold lg:leading-16 tracking-wide'>Hey, I'm <br /> <span className='bg-gradient-to-b from-primary-500 to-primary-300 bg-clip-text text-transparent underline underline-offset-8'>Isha Makvane</span></h1>
                         <h2 className='dark:text-light text-dark text-2xl mt-4 font-medium tracking-wide'>Web Designer</h2>
                         <p className='dark:text-white/75 text-dark/75 md:text-lg text-base mt-4 '>Crafting modern, responsive, and visually engaging websites that deliver exceptional user experiences and elevate digital brands.</p>

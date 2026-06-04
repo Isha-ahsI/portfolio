@@ -22,8 +22,8 @@ export const Project = () => {
         <>
             <section className='relative overflow-hidden max-w-6xl mx-auto py-24 sm:px-6 sm:py-28 px-4'>
                 {/* section title */}
-                <div className=' text-center flex flex-col justify-center items-center mb-20'>
-                    <SectionBadge text="Projects" />
+                <div className=' text-center flex flex-col justify-center items-center mb-12'>
+                    <SectionBadge text="Projects" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
                     <h1 className='font-bold text-2xl sm:text-4xl mb-2 text-primary'>Things I’ve Built</h1>
                     <p className='dark:text-white/75 text-dark/50 max-w-2xl'>From web applications to innovative tools, these projects represent my journey of learning, experimenting, and creating impactful solutions.</p>
                 </div>
