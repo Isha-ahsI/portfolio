@@ -1,217 +1,187 @@
-// import React, { useEffect, useRef } from 'react'
-
-// export const ParticleBg = () => {
-//     const canvasRef = useRef(null);
-
-//     useEffect(() => {
-//         const canvas = canvasRef.current;
-//         const ctx = canvas.getContext("2d");
-
-//         let particles = [];
-//         const particleCount = 80;
-
-//         canvas.width = window.innerWidth;
-//         canvas.height = window.innerHeight;
-
-//         class Particle {
-//             constructor() {
-//                 this.x = Math.random() * canvas.width;
-//                 this.y = Math.random() * canvas.height;
-//                 this.radius = Math.random() * 2 + 1;
-//                 this.dx = (Math.random() - 0.5) * 0.5;
-//                 this.dy = (Math.random() - 0.5) * 0.5;
-//             }
-
-//             draw() {
-//                 ctx.beginPath();
-//                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-
-//                 ctx.fillStyle = "rgba(99, 102, 241,0.5)";
-//                 ctx.shadowBlur = 15;
-//                 ctx.shadowColor = "#6366f1";
-
-//                 ctx.fill();
-//             }
-
-//             update() {
-//                 this.x += this.dx;
-//                 this.y += this.dy;
-
-//                 if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
-//                 if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
-
-//                 this.draw();
-//             }
-//         }
-
-//         function init() {
-//             particles = [];
-//             for (let i = 0; i < particleCount; i++) {
-//                 particles.push(new Particle());
-//             }
-//         }
-
-//         function animate() {
-//             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//             particles.forEach((particle) => particle.update());
-
-//             requestAnimationFrame(animate);
-//         }
-
-//         init();
-//         animate();
-
-//         window.addEventListener("resize", () => {
-//             canvas.width = window.innerWidth;
-//             canvas.height = window.innerHeight;
-//         });
-//     }, []);
-//     return (
-//         <canvas
-//             ref={canvasRef}
-//             className="absolute inset-0 w-full h-full"
-//         />
-//     );
-// }
-
-
 import React, { useEffect, useRef } from "react";
 import {
-    FaHtml5,
-    FaCss3Alt,
-    FaJs,
-    FaReact,
-    FaGithub,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaGithub,
 } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export const ParticleBg = () => {
-    const canvasRef = useRef(null);
+  const canvasRef = useRef(null);
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
 
-        const PRIMARY_COLOR = "#6366f1";
+    const PRIMARY_COLOR = "#6366f1";
 
-        let width = window.innerWidth;
-        let height = window.innerHeight;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let animationId;
 
-        canvas.width = width;
-        canvas.height = height;
+    const setupCanvas = () => {
+      const dpr = window.devicePixelRatio || 1;
 
-        const iconComponents = [
-            FaHtml5,
-            FaCss3Alt,
-            FaJs,
-            FaReact,
-            RiTailwindCssFill,
-            FaGithub,
-        ];
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
 
-        const icons = iconComponents.map((Icon) => {
-            const svgString = renderToStaticMarkup(
-                <Icon color={PRIMARY_COLOR} size={16} />
-            );
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
 
-            const img = new Image();
-            img.src =
-                "data:image/svg+xml;base64," +
-                btoa(unescape(encodeURIComponent(svgString)));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
 
-            return img;
-        });
+    setupCanvas();
 
-        let particles = [];
-        const particleCount = 40;
+    const iconComponents = [
+      FaHtml5,
+      FaCss3Alt,
+      FaJs,
+      FaReact,
+      RiTailwindCssFill,
+      FaGithub,
+    ];
 
-        class Particle {
-            constructor() {
-                // ✅ FULL SCREEN POSITION (STATIC BASE)
-                this.baseX = Math.random() * width;
-                this.baseY = Math.random() * height;
+    const icons = iconComponents.map((Icon) => {
+      const svgString = renderToStaticMarkup(
+        <Icon color={PRIMARY_COLOR} size={12} />
+      );
 
-                // ✅ LOCAL MOVEMENT ONLY
-                this.offsetX = 0;
-                this.offsetY = 0;
+      const img = new Image();
+      img.src =
+        "data:image/svg+xml;base64," +
+        btoa(unescape(encodeURIComponent(svgString)));
 
-                this.dx = (Math.random() - 0.5) * 0.3;
-                this.dy = (Math.random() - 0.5) * 0.3;
+      return img;
+    });
 
-                this.range = 10; // 🔥 movement limit
+    let particles = [];
 
-                this.size = Math.random() * 20 + 10;
+    const getParticleCount = () => {
+      const area = width * height;
 
-                this.icon = icons[Math.floor(Math.random() * icons.length)];
-            }
+      if (area > 3000000) return 120; // 4K
+      if (area > 1800000) return 90; // 2K
+      if (area > 1000000) return 70; // Desktop
+      if (area > 500000) return 50; // Tablet
 
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = 0.15;
-                ctx.shadowBlur = 1;
-                ctx.shadowColor = "#6366f1";
-                ctx.drawImage(
-                    this.icon,
-                    this.baseX + this.offsetX,
-                    this.baseY + this.offsetY,
-                    this.size,
-                    this.size
-                );
-                ctx.restore();
-            }
+      return 35; // Mobile
+    };
 
-            update() {
-                // 🔥 ONLY LOCAL MOVEMENT
-                this.offsetX += this.dx;
-                this.offsetY += this.dy;
+    class Particle {
+      constructor() {
+        this.baseX = Math.random() * width;
+        this.baseY = Math.random() * height;
 
-                // 🔥 limit small movement area (wiggle effect)
-                if (this.offsetX > this.range || this.offsetX < -this.range) {
-                    this.dx *= -1;
-                }
+        this.offsetX = 0;
+        this.offsetY = 0;
 
-                if (this.offsetY > this.range || this.offsetY < -this.range) {
-                    this.dy *= -1;
-                }
+        this.dx = (Math.random() - 0.5) * 0.25;
+        this.dy = (Math.random() - 0.5) * 0.25;
 
-                this.draw();
-            }
+        this.range = 12;
+
+        this.size = Math.random() * 16 + 12;
+
+        this.icon = icons[Math.floor(Math.random() * icons.length)];
+      }
+
+      draw() {
+        if (!this.icon.complete) return;
+
+        ctx.save();
+
+        ctx.globalAlpha = 0.1;
+        ctx.shadowBlur = 2;
+        ctx.shadowColor = PRIMARY_COLOR;
+
+        ctx.drawImage(
+          this.icon,
+          this.baseX + this.offsetX,
+          this.baseY + this.offsetY,
+          this.size,
+          this.size
+        );
+
+        ctx.restore();
+      }
+
+      update() {
+        this.offsetX += this.dx;
+        this.offsetY += this.dy;
+
+        if (
+          this.offsetX > this.range ||
+          this.offsetX < -this.range
+        ) {
+          this.dx *= -1;
         }
 
-        function init() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
+        if (
+          this.offsetY > this.range ||
+          this.offsetY < -this.range
+        ) {
+          this.dy *= -1;
         }
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach((p) => p.update());
-            requestAnimationFrame(animate);
+        this.draw();
+      }
+    }
+
+    const init = () => {
+      particles = [];
+
+      const particleCount = getParticleCount();
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach((particle) => particle.update());
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    let loadedIcons = 0;
+
+    icons.forEach((img) => {
+      img.onload = () => {
+        loadedIcons++;
+
+        if (loadedIcons === icons.length) {
+          init();
+          animate();
         }
+      };
+    });
 
-        init();
-        animate();
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
 
-        const handleResize = () => {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-        };
+      setupCanvas();
+      init();
+    };
 
-        window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-    return (
-        <canvas
-            ref={canvasRef}
-            className="absolute inset-0 w-full h-full"
-        />
-    );
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 h-full w-full"
+    />
+  );
 };
