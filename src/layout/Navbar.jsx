@@ -10,6 +10,7 @@ import { LiaDownloadSolid } from "react-icons/lia";
 import { motion, AnimatePresence } from "framer-motion";
 import { LuLinkedin, LuGithub, LuMail } from "react-icons/lu";
 import ShinyText from '@/components/ui/ShinyText';
+import Logo from "../assets/logo/logo.png"
 
 const iconMap = {
   homeLine: AiOutlineHome,
@@ -280,7 +281,7 @@ export const Navbar = () => {
 
           {/* middleside logo */}
           <div className="lg:mx-auto me-auto text-black dark:text-white font-heading font-bold text-xl">
-            <Link to="/">Logo</Link>
+            <Link to="/"><img src={Logo} alt="Logo" className="w-8 h-8" /></Link>
           </div>
 
           {/* rightside */}

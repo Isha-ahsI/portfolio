@@ -3,10 +3,13 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaJs,
+  FaGulp,
+  FaBootstrap,
   FaReact,
   FaGithub,
 } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
+import { SiSass } from "react-icons/si";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export const ParticleBg = () => {
@@ -40,6 +43,9 @@ export const ParticleBg = () => {
       FaHtml5,
       FaCss3Alt,
       FaJs,
+      SiSass,
+      FaGulp,
+      FaBootstrap,
       FaReact,
       RiTailwindCssFill,
       FaGithub,
