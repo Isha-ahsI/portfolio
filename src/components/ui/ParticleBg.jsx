@@ -9,7 +9,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiSass } from "react-icons/si";
+import { SiSass, SiReactbootstrap } from "react-icons/si";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export const ParticleBg = () => {
@@ -49,6 +49,7 @@ export const ParticleBg = () => {
       FaReact,
       RiTailwindCssFill,
       FaGithub,
+      SiReactbootstrap
     ];
 
     const icons = iconComponents.map((Icon) => {

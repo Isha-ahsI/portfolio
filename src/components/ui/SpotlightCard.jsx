@@ -6,7 +6,7 @@ export const SpotlightCard = ({
     children,
     className = "",
     borderColor = "#6366f1",
-    borderOpacity = "50",
+    borderOpacity = "60",
     spotlightColor = "#6366f1",
     spotlightOpacity = "20",
     ...props
@@ -38,15 +38,16 @@ export const SpotlightCard = ({
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className={cn(
-                "relative overflow-hidden rounded-xl bg-dark/5 dark:bg-white/10 border-dark/20 dark:border-light/20 text-dark dark:text-light transition-all p-8 text-center",
+                "relative overflow-hidden rounded-xl bg-dark/5 dark:bg-white/10 border border-dark/15 dark:border-light/15 text-dark dark:text-light transition-all duration-150 ease-in-out p-8 text-center flex flex-col items-center justify-center",
                 className
             )}
-            style={{
-                border: `1px solid ${isHovered
-                    ? `${borderColor}${borderOpacity}`
-                    : "rgba(255,255,255,0.15)"
-                    }`,
-            }}
+            style={
+                isHovered
+                    ? {
+                        border: `1px solid ${borderColor}${borderOpacity}`,
+                    }
+                    : {}
+            }
             {...props}
         >
             <div

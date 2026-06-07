@@ -5,9 +5,17 @@ import KoffuuImg from '../assets/projects/koffuu.jpg';
 import Sivoci from '../assets/projects/sivoci.jpg';
 import Staffu from '../assets/projects/staffu.jpg';
 import Zeevra from '../assets/projects/zeevra.jpg';
+import html from "../assets/skills/html.png";
+import css from "../assets/skills/css.png";
+import js from "../assets/skills/javascript.png";
+import bootstrap from "../assets/skills/bootstrap.png";
+import gulp from "../assets/skills/gulp.png";
+import react from "../assets/skills/react.png";
+import reactbootstrap from "../assets/skills/react-bootstrap.png";
+import sass from "../assets/skills/sass.png";
+import tailwindcss from "../assets/skills/tailwind-css.png";
 import {
     FaHtml5,
-    FaCss3Alt,
     FaJs,
     FaBootstrap,
     FaGulp,
@@ -312,5 +320,89 @@ export const Data = {
             "value": "100",
             "suffix": "%"
         }
+    ],
+    "skills": [
+        {
+            "id": 1,
+            "name": "HTML",
+            "icon": html,
+            "hashcolor": "#FF6900",
+            "color": "bg-orange-500",
+            "category": "Frontend",
+            "value": 96
+        },
+        {
+            "id": 2,
+            "name": "CSS",
+            "icon": css,
+            "hashcolor": "#00A6F4",
+            "color": "bg-sky-500",
+            "category": "Frontend",
+            "value": 96
+        },
+        {
+            "id": 3,
+            "name": "JavaScript",
+            "icon": js,
+            "hashcolor": "#FFDF20",
+            "color": "bg-yellow-400",
+            "category": "Frontend",
+            "value": 75
+        },
+        {
+            "id": 4,
+            "name": "Bootstrap",
+            "icon": bootstrap,
+            "hashcolor": "#8E51FF",
+            "color": "bg-violet-500",
+            "category": "Frontend",
+            "value": 95
+        },
+        {
+            "id": 5,
+            "name": "React",
+            "icon": react,
+            "hashcolor": "#00B8DB",
+            "color": "bg-cyan-500",
+            "category": "Frontend",
+            "value": 75
+        },
+        {
+            "id": 6,
+            "name": "React Bootstrap",
+            "icon": reactbootstrap,
+            "hashcolor": "#00D3F2",
+            "color": "bg-cyan-400",
+            "category": "Frontend",
+            "value": 85
+        },
+        {
+            "id": 7,
+            "name": "Tailwind CSS",
+            "icon": tailwindcss,
+            "hashcolor": "#0092B8",
+            "color": "bg-cyan-600",
+            "category": "Frontend",
+            "value": 85
+        },
+        {
+            "id": 8,
+            "name": "Sass",
+            "icon": sass,
+            "hashcolor": "#FB64B6",
+            "color": "bg-pink-400",
+            "category": "Frontend",
+            "value": 85
+        },
+        {
+            "id": 9,
+            "name": "Gulp",
+            "icon": gulp,
+            "hashcolor": "#FF6467",
+            "color": "bg-red-400",
+            "category": "Frontend",
+            "value": 85
+        },
+
     ]
 }
