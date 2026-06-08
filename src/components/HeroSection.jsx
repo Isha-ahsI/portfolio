@@ -20,7 +20,7 @@ export const HeroSection = () => {
                 <ParticleBg className="absolute top-0 left-0 w-full h-full z-10" />
                 {/* background blur overlay */}
                 <div className="absolute inset-0 h-full w-full z-20 bg-white/25 dark:bg-black/25 backdrop-blur-[0.25px]" />
-                <div className='relative z-30 mx-auto grid w-full max-w-6xl grid-cols-1 items-center px-4 sm:px-8 lg:pt-24 pt-34 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(220px,380px)] gap-16'>
+                <div className='relative z-30 mx-auto grid w-full max-w-7xl grid-cols-1 items-center px-4 sm:px-8 lg:pt-24 pt-34 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(220px,380px)] gap-16'>
                     {/* herosection content */}
                     <div className='flex flex-col justify-center lg:items-start items-center lg:text-start text-center'>
                         <SectionBadge text="Available for Work" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />

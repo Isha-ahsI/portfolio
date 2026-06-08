@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link, NavLink } from "react-router-dom";
 import Button from "../components/ui/button";
-import { ScrollProgressBar } from "../components/ui/ScrollProgressBar";
+import ScrollProgressBar from "../components/ui/ScrollProgressBar";
 import { Data } from "../data/data.js";
 import { AiOutlineHome, AiFillHome, AiOutlineProject, AiFillProject } from "react-icons/ai";
 import { RiUser3Line, RiUser3Fill, RiMenu4Line, RiCloseLine } from "react-icons/ri";
@@ -92,13 +92,13 @@ const SidebarNavLink = ({ heading, to, iconLine, iconFill, setIsActive }) => {
       onClick={handleClick}
       initial="initial"
       whileHover="whileHover"
-      className="group relative flex items-center justify-between border-b border-black/10 dark:border-white/10 py-4 transition-colors duration-500 md:py-8 uppercase cursor-pointer"
+      className="group relative flex items-center justify-between border-b border-dark/25 dark:border-white/10 py-4 transition-colors duration-500 md:py-8 uppercase cursor-pointer"
     >
       <Link ref={ref} to={to} className="w-full">
         <div className="relative flex items-center">
 
           {/* Icon Container */}
-          <div className="relative w-8 h-8 flex items-center justify-center mr-4 text-black/50 dark:text-white/50 group-hover:text-primary transition-colors duration-500">
+          <div className="relative w-8 h-8 flex items-center justify-center mr-4 text-dark dark:text-white/50 group-hover:text-primary transition-colors duration-500">
             {IconLine && (
               <IconLine className="absolute text-3xl transition-all duration-300 ease-linear group-hover:opacity-0 group-hover:scale-75 opacity-100 scale-100" />
             )}
@@ -118,7 +118,7 @@ const SidebarNavLink = ({ heading, to, iconLine, iconFill, setIsActive }) => {
                 staggerChildren: 0.075,
                 delayChildren: 0.25,
               }}
-              className="relative z-10 block text-4xl font-heading font-light text-black dark:text-white group-hover:text-primary group-hover:font-medium group-hover:tracking-wider transition-all duration-300 ease-linear md:text-4xl"
+              className="relative z-10 block text-4xl font-heading font-light text-dark dark:text-white group-hover:text-primary group-hover:font-medium group-hover:tracking-wider transition-all duration-300 ease-linear md:text-4xl"
             >
               {heading.split("").map((letter, i) => {
                 return (
@@ -169,7 +169,7 @@ const Curve = () => {
   };
 
   return (
-    <svg className="absolute top-0 -left-[99px] w-[100px] stroke-none h-full fill-white/50 backdrop-blur-xl dark:fill-dark/25 transition-colors duration-500">
+    <svg className="absolute top-0 -left-[99px] w-[100px] stroke-none h-full fill-light backdrop-blur-xl dark:fill-slate-950 transition-colors duration-500">
       <motion.path
         variants={curve}
         initial="initial"
@@ -187,7 +187,7 @@ const CurvedNavbar = ({ setIsActive, navItems, footer }) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="lg:hidden h-[100dvh] w-screen max-w-screen-sm fixed right-0 top-0 z-50 bg-light/50 backdrop-blur-xl dark:bg-dark/50 text-black dark:text-white shadow-2xl border-l border-black/10 dark:border-white/10 transition-colors duration-500"
+      className="lg:hidden h-[100dvh] w-screen max-w-screen-sm fixed right-0 top-0 z-50 bg-light backdrop-blur-xl dark:bg-slate-950 text-black dark:text-white shadow-2xl border-l border-black/10 dark:border-white/10 transition-colors duration-500"
     >
       {/* Close Button */}
       <button
@@ -200,7 +200,7 @@ const CurvedNavbar = ({ setIsActive, navItems, footer }) => {
 
       <div className="h-full pt-28 flex flex-col justify-between">
         <div className="flex flex-col text-5xl gap-3 mt-0 px-10 md:px-24">
-          <div className="text-black/50 dark:text-white/50 border-b border-black/10 dark:border-white/10 uppercase text-sm mb-4 pb-2">
+          <div className="text-dark/75 dark:text-white/50 border-b border-dark/25 dark:border-white/10 uppercase text-sm mb-4 pb-2">
             <p>Navigation</p>
           </div>
           <section className="bg-transparent mt-0">
