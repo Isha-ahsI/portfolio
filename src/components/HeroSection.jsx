@@ -6,7 +6,6 @@ import { ParticleBg } from '../components/ui/ParticleBg'
 import { FaHandshake } from "react-icons/fa";
 import Avatar from "../assets/avatar.png"
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
 import { SectionBadge } from './ui/SectionBadge';
 
 const MotionLink = motion.create(Link);
@@ -25,7 +24,7 @@ export const HeroSection = () => {
                     <div className='flex flex-col justify-center lg:items-start items-center lg:text-start text-center'>
                         <SectionBadge text="Available for Work" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
                         <h1 className='text-primary sm:text-6xl text-4xl font-bold lg:leading-16 tracking-wide'>Hey, I'm <br /> <span className='bg-gradient-to-b from-primary-500 to-primary-300 bg-clip-text text-transparent underline underline-offset-8'>Isha Makvane</span></h1>
-                        <h2 className='dark:text-light text-dark text-2xl mt-4 font-medium tracking-wide'>Web Designer</h2>
+                        <h2 className='dark:text-light text-dark text-2xl mt-4 font-medium tracking-wide'>Web Designer & Developer</h2>
                         <p className='dark:text-white/75 text-dark/75 md:text-lg text-base mt-4 '>Crafting modern, responsive, and visually engaging websites that deliver exceptional user experiences and elevate digital brands.</p>
                         <Button
                             variant="outline"

@@ -86,8 +86,8 @@ export const ParticleBg = () => {
         this.offsetX = 0;
         this.offsetY = 0;
 
-        this.dx = (Math.random() - 0.5) * 0.25;
-        this.dy = (Math.random() - 0.5) * 0.25;
+        this.dx = (Math.random() - 0.5) * 0.4;
+        this.dy = (Math.random() - 0.5) * 0.3;
 
         this.range = 12;
 

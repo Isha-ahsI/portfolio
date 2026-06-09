@@ -1,12 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Data } from "../data/data.js";
-import { LuGithub, LuLinkedin } from "react-icons/lu";
+import { ContactIcon } from '../components/ui/ContactIcon.jsx';
 import Logo from "../assets/logo/logo.png"
-const socialIconMap = {
-    github: LuGithub,
-    linkedin: LuLinkedin,
-};
 
 export const Footer = () => {
     return (
@@ -30,12 +26,9 @@ dark:to-transparent'>
                         <div className='text-center'>
                             <h5 className='mb-2 dark:text-white/75 text-dark/75 font-medium'>Find Me Online</h5>
                             <div className='flex items-center justify-center gap-4'>
-                                {Data.socialLinks.map((link) => {
-                                    const Icon = socialIconMap[link.icon];
-                                    return (
-                                        <Link key={link.id} to={link.to} className="md:h-10 h-8 md:w-10 w-8 md:rounded-xl rounded-lg grid place-items-center border dark:border-light/15 dark:bg-light/5 backdrop-blur-md dark:text-light/50 border-dark/15 bg-dark/5 text-dark/50 transition-all duration-300 ease-linear hover:border-primary hover:text-light hover:bg-primary hover:-translate-y-[4px] hover:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.5)]"><Icon className='md:text-lg text-base' /></Link>
-                                    )
-                                })}
+                                {Data.contactLinks.map((link, index) => (
+                                    <ContactIcon key={index} to={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+                                ))}
                             </div>
                         </div>
                     </div>

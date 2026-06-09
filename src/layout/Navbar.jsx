@@ -2,13 +2,13 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Link, NavLink } from "react-router-dom";
 import Button from "../components/ui/button";
 import ScrollProgressBar from "../components/ui/ScrollProgressBar";
+import { ContactIcon } from '../components/ui/ContactIcon.jsx';
 import { Data } from "../data/data.js";
 import { AiOutlineHome, AiFillHome, AiOutlineProject, AiFillProject } from "react-icons/ai";
 import { RiUser3Line, RiUser3Fill, RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { HiSun, HiMoon } from "react-icons/hi2";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { motion, AnimatePresence } from "framer-motion";
-import { LuLinkedin, LuGithub, LuMail } from "react-icons/lu";
 import ShinyText from '@/components/ui/ShinyText';
 import Logo from "../assets/logo/logo.png"
 
@@ -47,31 +47,9 @@ const CustomFooter = () => {
 
       {/* Right Side: Social & Mail Icons */}
       <div className="flex items-center gap-3">
-        <Link
-          to="mailto:isha.makvane@gmail.com"
-          aria-label="Email Me"
-          className="h-9 w-9 rounded-lg grid place-items-center border dark:border-light/15 dark:bg-light/5 backdrop-blur-md dark:text-light/75 border-dark/15 bg-dark/5 text-dark/75 transition-all duration-300 ease-linear hover:border-primary hover:text-white hover:bg-primary hover:-translate-y-[4px] hover:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.5)]"
-        >
-          <LuMail size={18} />
-        </Link>
-        <Link
-          to="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub Profile"
-          className="h-9 w-9 rounded-lg grid place-items-center border dark:border-light/15 dark:bg-light/5 backdrop-blur-md dark:text-light/75 border-dark/15 bg-dark/5 text-dark/75 transition-all duration-300 ease-linear hover:border-primary hover:text-white hover:bg-primary hover:-translate-y-[4px] hover:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.5)]"
-        >
-          <LuGithub size={18} />
-        </Link>
-        <Link
-          to="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn Profile"
-          className="h-9 w-9 rounded-lg grid place-items-center border dark:border-light/15 dark:bg-light/5 backdrop-blur-md dark:text-light/75 border-dark/15 bg-dark/5 text-dark/75 transition-all duration-300 ease-linear hover:border-primary hover:text-white hover:bg-primary hover:-translate-y-[4px] hover:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.5)]"
-        >
-          <LuLinkedin size={18} />
-        </Link>
+        {Data.contactLinks.map((link, index) => (
+          <ContactIcon key={index} to={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+        ))}
       </div>
     </div>
   );
@@ -199,7 +177,7 @@ const CurvedNavbar = ({ setIsActive, navItems, footer }) => {
       </button>
 
       <div className="h-full pt-28 flex flex-col justify-between">
-        <div className="flex flex-col text-5xl gap-3 mt-0 px-10 md:px-24">
+        <div className="flex flex-col text-5xl gap-3 mt-0 px-10 md:px-16">
           <div className="text-dark/75 dark:text-white/50 border-b border-dark/25 dark:border-white/10 uppercase text-sm mb-4 pb-2">
             <p>Navigation</p>
           </div>

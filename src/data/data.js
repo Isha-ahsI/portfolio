@@ -5,6 +5,7 @@ import KoffuuImg from '../assets/projects/koffuu.jpg';
 import Sivoci from '../assets/projects/sivoci.jpg';
 import Staffu from '../assets/projects/staffu.jpg';
 import Zeevra from '../assets/projects/zeevra.jpg';
+import EcommerceImg from '../assets/projects/ecommerce.jpg';
 import html from "../assets/skills/html.png";
 import css from "../assets/skills/css.png";
 import js from "../assets/skills/javascript.png";
@@ -14,15 +15,18 @@ import react from "../assets/skills/react.png";
 import reactbootstrap from "../assets/skills/react-bootstrap.png";
 import sass from "../assets/skills/sass.png";
 import tailwindcss from "../assets/skills/tailwind-css.png";
+import MongoDb from "../assets/skills/mongodb.png";
 import {
     FaHtml5,
     FaJs,
     FaBootstrap,
     FaGulp,
     FaReact,
+    FaNode
 } from "react-icons/fa";
-import { SiReactbootstrap, SiSass } from "react-icons/si";
+import { SiReactbootstrap, SiSass,SiMongodb,SiExpress  } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
+import { LuMail, LuLinkedin, LuGithub } from 'react-icons/lu';
 
 
 export const Data = {
@@ -47,18 +51,6 @@ export const Data = {
             "to": "/",
             "iconLine": "projectLine",
             "iconFill": "projectFill"
-        }
-    ],
-    "socialLinks": [
-        {
-            "id": 1,
-            "to": "/",
-            "icon": "github",
-        },
-        {
-            "id": 2,
-            "to": "/",
-            "icon": "linkedin",
         }
     ],
     "projectCard": [
@@ -300,6 +292,42 @@ export const Data = {
                 }
             ],
         },
+        {
+            "id": 8,
+            "title": "E-commerce Platform",
+            "description": "An online fashion store that enables customers to explore trendy apparel, manage their shopping cart, and complete purchases securely through an intuitive and user-friendly interface.",
+            "image": EcommerceImg,
+            "github": "https://github.com/",
+            "live": "https://e-commerce-ki.vercel.app/",
+            "type": "Web",
+            "technologies": [
+                {
+                    "name": "React",
+                    "icon": FaReact,
+                    "color": "text-cyan-500",
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": RiTailwindCssFill,
+                    "color": "text-sky-500"
+                },
+                {
+                    "name": "ExpressJs",
+                    "icon": SiExpress,
+                    "color": "text-green-500"
+                },
+                {
+                    "name": "NodeJs",
+                    "icon": FaNode,
+                    "color": "text-green-500"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": SiMongodb,
+                    "color": "text-green-500"
+                },
+            ],
+        }
 
     ],
     "stats": [
@@ -403,6 +431,39 @@ export const Data = {
             "category": "Frontend",
             "value": 85
         },
+        {
+            "id": 10,
+            "name": "MongoDB",
+            "icon": MongoDb,
+            "hashcolor": "#4DB33D",
+            "color": "bg-green-500",
+            "category": "Backend",
+            "value": 60
+        },
+        
 
+    ],
+    "contactLinks": [
+      {
+        icon: LuMail,
+        label: 'Email',
+        value: 'isha.makvane@gmail.com',
+        href: 'mailto:isha.makvane@gmail.com',
+        external: false,
+      },
+      {
+        icon: LuLinkedin,
+        label: 'LinkedIn',
+        value: 'linkedin.com/in/isha-makvane',
+        href: 'https://linkedin.com/in/isha-makvane',
+        external: true,
+      },
+      {
+        icon: LuGithub,
+        label: 'GitHub',
+        value: 'github.com/isha-makvane',
+        href: 'https://github.com/isha-makvane',
+        external: true,
+      },
     ]
 }

@@ -11,7 +11,7 @@ export const Project = () => {
     const [previewProject, setPreviewProject] = useState(null);
     return (
         <>
-            <section className='relative overflow-hidden max-w-7xl mx-auto py-24 sm:px-6 sm:py-28 px-4'>
+            <section className='relative overflow-hidden max-w-7xl mx-auto pt-24 sm:px-6 sm:pt-28 px-4'>
                 {/* section title */}
                 <div className=' text-center flex flex-col justify-center items-center mb-12'>
                     <SectionBadge text="Projects" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
@@ -22,7 +22,7 @@ export const Project = () => {
                 {/* project cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
                     {Data.projectCard.map((project) => (
-                        <div onClick={() => setSelectedProject(project)} className={`relative w-full h-full overflow-hidden rounded-2xl group/card cursor-pointer`}>
+                        <div onClick={() => setSelectedProject(project)} key={project.id} className={`relative w-full h-full overflow-hidden rounded-2xl group/card cursor-pointer`}>
                             {/* Image */}
                                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300  group-hover/card:scale-105"/>
                                 <div className="absolute z-10 bottom-0 transition-all duration-300 ease-linear left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent "></div>
@@ -136,7 +136,7 @@ export const Project = () => {
                     className="bg-transparent"
                 >
                     <AlertDialogContent
-                        className="md:max-w-4xl sm:max-w-2xl max-w-lg border-none bg-transparent shadow-none"
+                        className="md:max-w-5xl sm:max-w-2xl max-w-lg border-none bg-transparent shadow-none"
                     >
                         <AlertDialogHeader className="flex flex-row items-center justify-between px-1">
                             <div>

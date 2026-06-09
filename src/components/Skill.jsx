@@ -8,7 +8,7 @@ import { Data } from '../data/data'
 export const Skill = () => {
     return (
         <>
-            <section className='relative overflow-hidden max-w-6xl mx-auto pb-24 sm:px-6 sm:pb-28 px-4'>
+            <section className='relative overflow-hidden max-w-7xl mx-auto pt-24 sm:px-6 sm:pt-28 px-4'>
 
                 {/* section title */}
                 <div className=' text-center flex flex-col justify-center items-center mb-12'>
