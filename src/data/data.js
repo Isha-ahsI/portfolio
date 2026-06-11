@@ -24,7 +24,7 @@ import {
     FaReact,
     FaNode
 } from "react-icons/fa";
-import { SiReactbootstrap, SiSass,SiMongodb,SiExpress  } from "react-icons/si";
+import { SiReactbootstrap, SiSass, SiMongodb, SiExpress } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { LuMail, LuLinkedin, LuGithub } from 'react-icons/lu';
 
@@ -440,30 +440,63 @@ export const Data = {
             "category": "Backend",
             "value": 60
         },
-        
+
 
     ],
     "contactLinks": [
-      {
-        icon: LuMail,
-        label: 'Email',
-        value: 'isha.makvane@gmail.com',
-        href: 'mailto:isha.makvane@gmail.com',
-        external: false,
-      },
-      {
-        icon: LuLinkedin,
-        label: 'LinkedIn',
-        value: 'linkedin.com/in/isha-makvane',
-        href: 'https://linkedin.com/in/isha-makvane',
-        external: true,
-      },
-      {
-        icon: LuGithub,
-        label: 'GitHub',
-        value: 'github.com/isha-makvane',
-        href: 'https://github.com/isha-makvane',
-        external: true,
-      },
+        {
+            icon: LuMail,
+            label: 'Email',
+            value: 'isha.makvane@gmail.com',
+            href: 'mailto:isha.makvane@gmail.com',
+            external: false,
+        },
+        {
+            icon: LuLinkedin,
+            label: 'LinkedIn',
+            value: 'linkedin.com/in/isha-makvane',
+            href: 'https://linkedin.com/in/isha-makvane',
+            external: true,
+        },
+        {
+            icon: LuGithub,
+            label: 'GitHub',
+            value: 'github.com/isha-makvane',
+            href: 'https://github.com/isha-makvane',
+            external: true,
+        },
+    ],
+    "experience": [
+        {
+            "id": 1,
+            "title": "Continuous Learning & Development",
+            "company": "Self-Driven",
+            "duration": "Currently",
+            "description": "Actively expanding my technical stack by learning modern web technologies and building robust, real-world projects to solve practical problems."
+        },
+        {
+            "id": 2,
+            "company": "Mantraksh Devs",
+            "duration": "Apr 2025 - Apr 2026",
+            "roles": [
+                {
+                    "title": "Web Designer",
+                    "duration": "Jun 2025 - Apr 2026",
+                    "description": "Transitioned to a full-time role. Worked on live projects, developing responsive web applications, optimizing user interfaces, and collaborating closely with the team to deliver high-quality code."
+                },
+                {
+                    "title": "Web Design Intern",
+                    "duration": "Apr 2025 - Jun 2025",
+                    "description": "Gained hands-on professional experience by assisting the development team in building responsive UI components, fixing bugs, and learning modern development workflows."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "College Final Year Project",
+            "company": "Academic Experience",
+            "duration": "Dec 2024 - Mar 2025",
+            "description": "Designed and developed a comprehensive full-stack MERN (MongoDB, Express.js, React, Node.js) project."
+        }
     ]
 }
