@@ -58,6 +58,20 @@ h6 {
   @apply font-heading;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
 .animate-scrolldown {
   animation: scrolldown 2s infinite;
   display: block;

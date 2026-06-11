@@ -4,6 +4,7 @@ import Button from "../components/ui/button";
 import ScrollProgressBar from "../components/ui/ScrollProgressBar";
 import { ContactIcon } from '../components/ui/ContactIcon.jsx';
 import { Data } from "../data/data.js";
+import { flushSync } from "react-dom";
 import { AiOutlineHome, AiFillHome, AiOutlineProject, AiFillProject } from "react-icons/ai";
 import { RiUser3Line, RiUser3Fill, RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { HiSun, HiMoon } from "react-icons/hi2";
@@ -206,8 +207,12 @@ const CurvedNavbar = ({ setIsActive, navItems, footer }) => {
 };
 
 export const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() =>
+    document.documentElement.classList.contains("dark")
+  );
   const [isActive, setIsActive] = useState(false);
+
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     if (darkMode) {
@@ -216,6 +221,56 @@ export const Navbar = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+
+  const handleThemeToggle = async () => {
+    if (!buttonRef.current) return;
+
+    const transition = document.startViewTransition?.(() => {
+      flushSync(() => {
+        setDarkMode((prev) => {
+          const next = !prev;
+
+          document.documentElement.classList.toggle("dark", next);
+
+          localStorage.setItem(
+            "theme",
+            next ? "dark" : "light"
+          );
+
+          return next;
+        });
+      });
+    });
+
+    if (!transition) return;
+
+    await transition.ready;
+
+    const { left, top, width, height } =
+      buttonRef.current.getBoundingClientRect();
+
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+
+    const radius = Math.hypot(
+      Math.max(centerX, window.innerWidth - centerX),
+      Math.max(centerY, window.innerHeight - centerY)
+    );
+
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${centerX}px ${centerY}px)`,
+          `circle(${radius}px at ${centerX}px ${centerY}px)`,
+        ],
+      },
+      {
+        duration: 700,
+        easing: "ease-in-out",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  };
 
   useEffect(() => {
     if (isActive) {
@@ -275,7 +330,7 @@ export const Navbar = () => {
             </button>
 
             {/* light-dark button */}
-            <button onClick={() => setDarkMode(!darkMode)} className=" relative w-8 h-8 rounded-lg bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
+            <button ref={buttonRef} onClick={handleThemeToggle} className=" relative w-8 h-8 rounded-lg bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
             >
               <HiMoon
                 className={` absolute text-primary transition-all duration-500 text-2xl ${darkMode ? "rotate-[360deg] scale-0" : "rotate-0 scale-100"} `}
