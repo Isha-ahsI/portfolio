@@ -49,7 +49,7 @@ export const ContactUs = () => {
 
           {/* right: primary bg contact detail card */}
 
-          <div className='rounded-2xl p-8 bg-primary border border-dark/15 dark:border-light/15 text-dark dark:text-light'>
+          <div className='rounded-2xl p-8 bg-primary border border-dark/15 dark:border-light/15 text-dark dark:text-light' data-primary-bg>
             <h1 className='font-semibold text-2xl sm:text-2xl mb-2 text-white tracking-wide'>Send Message</h1>
             <form className='flex flex-col gap-6'>
               {/* Name */}

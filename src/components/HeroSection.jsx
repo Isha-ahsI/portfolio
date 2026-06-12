@@ -37,7 +37,7 @@ export const HeroSection = () => {
                     </div>
                     {/* hero image */}
                     <div className='flex items-center justify-center'>
-                        <div className="relative max-h-75 max-w-75 rounded-lg bg-primary backdrop-blur-md shadow-[0_0_50px_rgba(var(--color-primary-rgb),0.5)] lg:mx-0 mx-8">
+                        <div className="relative max-h-75 max-w-75 rounded-lg bg-primary backdrop-blur-md shadow-[0_0_50px_rgba(var(--color-primary-rgb),0.5)] lg:mx-0 mx-8" data-primary-bg>
                             <img src={Avatar} alt="avatar" className='origin-bottom h-full w-full relative z-20' />
                             <div className="absolute z-10 top-0 left-0 rounded-lg h-full w-full border border-dashed border-dark/50 dark:border-light/50 bg-transparent -ml-6 -mt-6"></div>
                             <div className="absolute z-0 h-full w-full bg-primary/10 rounded-lg backdrop-blur-sm top-0 left-0 ml-6 mt-6"></div>

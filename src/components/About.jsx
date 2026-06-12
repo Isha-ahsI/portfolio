@@ -26,7 +26,7 @@ export const About = () => {
                 {/* Content Card */}
                 <div
                     className="md:z-10 md:absolute md:start-70 rounded-2xl md:pl-16 md:pr-8 md:px-10 p-8 border border-dark/20 dark:border-white/20 bg-primary backdrop-blur-md shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.2)] md:text-start text-center"
-                >
+                    data-primary-bg>
 
                     <SectionBadge text="About Me" bgColor="bg-white/25 border border-white/25 backdrop-blur-2xl text-primary" className="text-white" color="#000000" shineColor="#ffffff" />
                     <h2 className="font-[900] text-2xl sm:text-4xl uppercase tracking-wider text-white mb-2">

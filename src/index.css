@@ -43,6 +43,7 @@ body {
   @apply bg-white dark:bg-slate-950 transition-colors duration-300 font-body font-normal;
 }
 
+
 @layer base {
   ::selection {
     @apply bg-primary text-white;
@@ -126,13 +127,16 @@ h6 {
     height: 6px;
   }
 
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
-  }
+  
+}
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-dark/20 dark:bg-white/20 rounded-full transition-colors duration-300;
-  }
+ 
+ }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-primary dark:bg-primary;
