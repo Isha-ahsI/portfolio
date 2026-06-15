@@ -5,7 +5,8 @@ import ScrollProgressBar from "../components/ui/ScrollProgressBar";
 import { ContactIcon } from '../components/ui/ContactIcon.jsx';
 import { Data } from "../data/data.js";
 import { flushSync } from "react-dom";
-import { AiOutlineHome, AiFillHome, AiOutlineProject, AiFillProject } from "react-icons/ai";
+import { AiOutlineHome, AiFillHome, AiOutlineProject,AiFillProject} from "react-icons/ai";
+import { IoCallOutline,IoCallSharp } from "react-icons/io5";
 import { RiUser3Line, RiUser3Fill, RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { HiSun, HiMoon } from "react-icons/hi2";
 import { LiaDownloadSolid } from "react-icons/lia";
@@ -20,6 +21,8 @@ const iconMap = {
   homeFill: AiFillHome,
   aboutFill: RiUser3Fill,
   projectFill: AiFillProject,
+  contactLine: IoCallOutline,
+  contactFill: IoCallSharp,
 };
 
 const MENU_SLIDE_ANIMATION = {
@@ -97,7 +100,7 @@ const SidebarNavLink = ({ heading, to, iconLine, iconFill, setIsActive }) => {
                 staggerChildren: 0.075,
                 delayChildren: 0.25,
               }}
-              className="relative z-10 block text-4xl font-heading font-light text-dark dark:text-white group-hover:text-primary group-hover:font-medium group-hover:tracking-wider transition-all duration-300 ease-linear md:text-4xl"
+              className="relative z-10 block sm:text-4xl text-3xl font-heading font-light text-dark dark:text-white group-hover:text-primary group-hover:font-medium group-hover:tracking-wider transition-all duration-300 ease-linear md:text-4xl"
             >
               {heading.split("").map((letter, i) => {
                 return (

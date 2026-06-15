@@ -1,10 +1,39 @@
 import React, { useState } from 'react'
 import { SectionBadge } from './ui/SectionBadge';
+import { motion } from 'framer-motion';
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogFooter } from "./ui/alert-dialog";
 import { FiArrowUpRight, FiGithub, FiChevronDown, FiFilter } from "react-icons/fi";
 import { Badge } from './ui/badge';
 import { Link } from 'react-router-dom';
 import { Data } from '../data/data';
+
+const containerVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            delayChildren: 1.2,
+            staggerChildren: 1,
+        },
+    },
+};
+
+const buttonVariants = {
+    hidden: {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+    },
+    visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut",
+            delay: i * 0.2,
+        },
+    }),
+};
 
 export const Project = () => {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -32,18 +61,22 @@ export const Project = () => {
             <section className='relative max-w-7xl mx-auto pt-24 sm:px-6 sm:pt-28 px-4 min-h-[80vh]'>
                 {/* section title */}
                 <div className=' text-center flex flex-col justify-center items-center mb-12'>
-                    <SectionBadge text="Projects" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
-                    <h1 className='font-bold text-2xl sm:text-4xl mb-2 text-primary'>Things I’ve Built</h1>
-                    <p className='dark:text-white/75 text-dark/50 max-w-2xl'>From web applications to innovative tools, these projects represent my journey of learning, experimenting, and creating impactful solutions.</p>
+                    <motion.div initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "linear" }}>
+                        <SectionBadge text="Projects" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
+                    </motion.div>
+                    <motion.h1 className='font-bold text-2xl sm:text-4xl mb-2 text-primary' initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6, duration: 0.6, ease: "linear" }}>Things I’ve Built</motion.h1>
+                    <motion.p className='dark:text-white/75 text-dark/50 max-w-2xl' initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1, duration: 0.6, ease: "linear" }}>From web applications to innovative tools, these projects represent my journey of learning, experimenting, and creating impactful solutions.</motion.p>
                 </div>
 
                 {/* Filters */}
-                <div className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 mb-12 relative z-30">
+                <motion.div className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 mb-12 relative z-30" initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ staggerChildren: 0.2 }}>
                     {/* Category Filter Buttons */}
                     <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                         {categories.map((category, index) => (
-                            <button
+                            <motion.button
                                 key={index}
+                                custom={index}
+                                variants={buttonVariants}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${activeCategory === category
                                     ? 'bg-primary text-white border-primary shadow-[0_0_8px_0_rgba(var(--color-primary-rgb),.5)]'
@@ -51,12 +84,13 @@ export const Project = () => {
                                     }`}
                             >
                                 {category}
-                            </button>
+                            </motion.button>
                         ))}
                     </div>
 
                     {/* Skill Filter Dropdown */}
-                    <div className="relative">
+                    <motion.div className="relative"  custom={categories.length}
+  variants={buttonVariants}>
                         <button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             className="flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm font-medium transition-all duration-300 border bg-transparent text-dark dark:text-white border-dark/15 dark:border-white/10 hover:border-primary hover:text-primary dark:hover:text-primary dark:hover:border-primary"
@@ -90,14 +124,14 @@ export const Project = () => {
                                 </div>
                             </>
                         )}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* project cards */}
                 {filteredProjects.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
                         {filteredProjects.map((project) => (
-                            <div onClick={() => setSelectedProject(project)} key={project.id} className={`relative w-full h-full overflow-hidden rounded-2xl group/card cursor-pointer`}>
+                            <motion.div onClick={() => setSelectedProject(project)} key={project.id} className={`relative w-full h-full overflow-hidden rounded-2xl group/card cursor-pointer`} whileHover={{ scale: 1.05 }}>
                                 {/* Image */}
                                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300  group-hover/card:scale-105" />
                                 <div className="absolute z-10 bottom-0 transition-all duration-300 ease-linear left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent "></div>
@@ -121,7 +155,7 @@ export const Project = () => {
                                         <FiArrowUpRight className="transition-all duration-300 ease-linear rotate-0 group-hover/view:rotate-45 group-hover/card:rotate-45" />
                                     </button>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 ) : (

@@ -51,6 +51,13 @@ export const Data = {
             "to": "/",
             "iconLine": "projectLine",
             "iconFill": "projectFill"
+        },
+        {
+            "id": 4,
+            "title": "Contact",
+            "to": "/",
+            "iconLine": "contactLine",
+            "iconFill": "contactFill"
         }
     ],
     "projectCard": [
