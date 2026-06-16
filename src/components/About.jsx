@@ -29,8 +29,8 @@ const cardVariants = isDesktop
     : {
         hidden: {
             opacity: 0,
-            y: 50,
-            scale: 0.95,
+            y: 100,
+            scale: 0.5,
         },
         visible: {
             opacity: 1,
@@ -64,10 +64,23 @@ export const About = () => {
 
                 {/* PNG Image */}
                 <motion.div className="relative z-20 h-[400px] md:block hidden" initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "linear" }}>
-                    <img
+                    <motion.img
                         src={FullAvatar}
                         alt="Isha Makvane"
-                        className="w-full h-full object-cover drop-shadow-[0_8px_16px_rgba(var(--color-primary-rgb),0.5)]"
+                        className="w-full h-full object-cover"
+                        animate={{
+                            scale: [1, 1.05, 1],
+                            filter: [
+                                "drop-shadow(0 8px 16px rgba(var(--color-primary-rgb), 0.5))",
+                                "drop-shadow(0 14px 28px rgba(var(--color-primary-rgb), 0.75))",
+                                "drop-shadow(0 8px 16px rgba(var(--color-primary-rgb), 0.5))",
+                            ],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "linear",
+                        }}
                     />
                 </motion.div>
 

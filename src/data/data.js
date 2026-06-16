@@ -34,28 +34,28 @@ export const Data = {
         {
             "id": 1,
             "title": "Home",
-            "to": "/",
+            "to": "#home",
             "iconLine": "homeLine",
             "iconFill": "homeFill"
         },
         {
             "id": 2,
             "title": "About",
-            "to": "/",
+            "to": "#about",
             "iconLine": "aboutLine",
             "iconFill": "aboutFill"
         },
         {
             "id": 3,
             "title": "Projects",
-            "to": "/",
+            "to": "#projects",
             "iconLine": "projectLine",
             "iconFill": "projectFill"
         },
         {
             "id": 4,
             "title": "Contact",
-            "to": "/",
+            "to": "#contact",
             "iconLine": "contactLine",
             "iconFill": "contactFill"
         }

@@ -7,12 +7,14 @@ import { FiBriefcase } from 'react-icons/fi';
 
 export const Experience = () => {
     return (
-        <section className='relative max-w-6xl mx-auto pt-24 sm:px-6 sm:pt-28 px-4 overflow-hidden'>
+        <section id="experience" className='relative max-w-6xl mx-auto pt-24 sm:px-6 sm:pt-28 px-4 overflow-hidden'>
             {/* Section Title */}
             <div className='text-center flex flex-col justify-center items-center mb-16 md:mb-24'>
-                <SectionBadge text="Experience" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
-                <h1 className='font-bold text-2xl sm:text-4xl mb-2 text-primary mt-4'>My Work Journey</h1>
-                <p className='dark:text-white/75 text-dark/50 max-w-2xl'>A timeline of my professional experience and the roles where I've grown my skills and delivered impact.</p>
+                <motion.div initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: "linear" }}>
+                    <SectionBadge text="Experience" bgColor="bg-primary/25 border border-primary/25 backdrop-blur-2xl text-primary" />
+                </motion.div>
+                <motion.h1 className='font-bold text-2xl sm:text-4xl mb-2 text-primary' initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4, duration: 0.6, ease: "linear" }}>My Work Journey</motion.h1>
+                <motion.p className='dark:text-white/75 text-dark/50 max-w-2xl' initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.8, duration: 0.6, ease: "linear" }}>A timeline of my professional experience and the roles where I've grown my skills and delivered impact.</motion.p>
             </div>
 
             {/* Timeline */}
@@ -28,7 +30,7 @@ export const Experience = () => {
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
+                            transition={{ duration: 0.6, delay: 1 }}
                             className={`relative flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-20 w-full ${isEven ? 'md:flex-row-reverse' : ''}`}
                         >
                             {/* Empty space for desktop alternating layout */}

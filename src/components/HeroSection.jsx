@@ -12,7 +12,7 @@ const MotionLink = motion.create(Link);
 export const HeroSection = () => {
     return (
         <>
-            <section className='relative flex flex-col min-h-[100svh] items-center justify-center overflow-hidden'>
+            <section id="home" className='relative flex flex-col min-h-[100svh] items-center justify-center overflow-hidden'>
                 {/* background gredientblobs */}
                 <GradientBlobs className='absolute inset-0 z-0' />
                 {/* background particles */}
