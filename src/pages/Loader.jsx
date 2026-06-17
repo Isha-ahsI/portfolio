@@ -17,8 +17,8 @@ const orbitalLoaderVariants = cva(
         left: "flex-row-reverse",
       },
     },
-    defaultVariants:{
-      messagePlacement:"bottom"
+    defaultVariants: {
+      messagePlacement: "bottom"
     }
   }
 );
@@ -31,7 +31,21 @@ function OrbitalLoader({ className, ...props }) {
 
     <div className={cn(orbitalLoaderVariants())}>
 
-      <div
+      <motion.div
+      initial={{
+            opacity: 0,
+            scale: 0,
+          }}
+
+          animate={{
+            opacity: [0, 1, 1],
+            scale: [0, 1, 1.05, 1],
+          }}
+
+          transition={{
+            duration: 1.2,
+            ease: "easeOut",
+          }}
         className={cn(
           "relative sm:w-72 sm:h-72 w-50 h-50 flex items-center justify-center",
           className
@@ -39,15 +53,17 @@ function OrbitalLoader({ className, ...props }) {
         {...props}
       >
 
-        <motion.img
+        <img
           src={Logo}
           alt="Logo"
+
           className="
-          sm:w-24 sm:h-24
-          w-16 h-16
-          object-contain
-          z-10
-          "
+    sm:w-24 sm:h-24
+    w-16 h-16 
+    object-contain
+    z-10
+    drop-shadow-[12px_12px_40px_rgba(var(--color-primary-rgb),0.75)]
+  "
         />
 
 
@@ -59,12 +75,12 @@ function OrbitalLoader({ className, ...props }) {
           rounded-full
           "
           animate={{
-            rotate:360
+            rotate: 360
           }}
           transition={{
-            duration:1,
-            repeat:Infinity,
-            ease:"linear"
+            duration: 1,
+            repeat: Infinity,
+            ease: "linear"
           }}
         />
 
@@ -77,12 +93,12 @@ function OrbitalLoader({ className, ...props }) {
           rounded-full
           "
           animate={{
-            rotate:-360
+            rotate: -360
           }}
           transition={{
-            duration:1.5,
-            repeat:Infinity,
-            ease:"linear"
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "linear"
           }}
         />
 
@@ -94,16 +110,16 @@ function OrbitalLoader({ className, ...props }) {
           rounded-full
           "
           animate={{
-            rotate:360
+            rotate: 360
           }}
           transition={{
-            duration:.8,
-            repeat:Infinity,
-            ease:"linear"
+            duration: .8,
+            repeat: Infinity,
+            ease: "linear"
           }}
         />
 
-      </div>
+      </motion.div>
 
     </div>
   )
@@ -116,29 +132,29 @@ function OrbitalLoader({ className, ...props }) {
 export const Loader = ({ finishLoading }) => {
 
 
-useEffect(()=>{
+  useEffect(() => {
 
- const timer = setTimeout(()=>{
+    const timer = setTimeout(() => {
 
-   finishLoading();
+      finishLoading();
 
- },2500);
-
-
- return ()=>clearTimeout(timer);
+    }, 2500);
 
 
-},[finishLoading]);
+    return () => clearTimeout(timer);
+
+
+  }, [finishLoading]);
 
 
 
-return (
+  return (
 
-<>
+    <>
 
 
-<div
-className="
+      <div
+        className="
 absolute
 w-[600px]
 h-[600px]
@@ -146,15 +162,15 @@ bg-primary/25
 blur-[150px]
 rounded-full
 "
-/>
+      />
 
 
 
-<OrbitalLoader />
+      <OrbitalLoader />
 
 
-</>
+    </>
 
-)
+  )
 
 }

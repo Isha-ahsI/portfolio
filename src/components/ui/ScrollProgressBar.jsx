@@ -1,33 +1,6 @@
-// import React, { useEffect, useState } from 'react'
-
-// export const ScrollProgressBar = () => {
-//     const [scrollTop, setScrollTop] = useState(0);
-
-//     const onScroll = () => {
-//         const winScroll = document.documentElement.scrollTop;
-//         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-//         const scrolled = (winScroll / height) * 100;
-
-//         setScrollTop(scrolled);
-//     };
-
-//     useEffect(() => {
-//         window.addEventListener("scroll", onScroll);
-
-//         return () => window.removeEventListener("scroll", onScroll);
-//     }, []);
-
-//     return (
-//         <div className="fixed top-0 z-50 w-full h-0.5 bg-light/50 dark:bg-dark/50 backdrop-blur-2xl">
-//             <div
-//                 style={{ transform: `scaleX(${scrollTop / 100})` }}
-//                 className="h-full bg-primary origin-left transition-all duration-150 ease-linear shadow-[0_0_8px_theme(colors.primary),0_0_16px_theme(colors.primary)]"
-//             ></div>
-//         </div>
-//     );
-// };
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa6";
 
 export default function ScrollProgressBar() {
@@ -62,7 +35,7 @@ export default function ScrollProgressBar() {
     circumference - (scrollProgress / 100) * circumference;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <motion.div className="fixed bottom-6 right-6 z-50" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: 'linear', delay: 1 }}>
       <button
         onClick={scrollToTop}
         className="relative flex h-14 w-14 items-center justify-center rounded-full cursor-pointer
@@ -105,6 +78,6 @@ export default function ScrollProgressBar() {
           className="relative z-10 text-dark dark:text-light"
         />
       </button>
-    </div>
+    </motion.div>
   );
 }

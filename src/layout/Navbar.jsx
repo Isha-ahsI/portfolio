@@ -10,7 +10,7 @@ import { IoCallOutline, IoCallSharp } from "react-icons/io5";
 import { RiUser3Line, RiUser3Fill, RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { HiSun, HiMoon } from "react-icons/hi2";
 import { LiaDownloadSolid } from "react-icons/lia";
-import { motion, AnimatePresence, useMotionValue } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ShinyText from '@/components/ui/ShinyText';
 import Logo from "../assets/logo/logo.png"
 
@@ -40,6 +40,33 @@ const MENU_SLIDE_ANIMATION = {
   exit: {
     x: "calc(100% + 100px)",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+  },
+};
+
+const buttonContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.8,
+    },
+  },
+};
+
+
+const buttonItem = {
+  hidden: {
+    opacity: 0,
+    x: 50,
+  },
+
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.76, 0, 0.24, 1],
+    },
   },
 };
 
@@ -269,6 +296,10 @@ export const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const [isLockScroll, setIsLockScroll] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isLarge, setIsLarge] = useState(
+    () => window.innerWidth >= 1024
+  );
+
 
   const buttonRef = useRef(null);
 
@@ -397,27 +428,57 @@ export const Navbar = () => {
     };
   }, [isLockScroll]);
 
+  // responsive animation
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLarge(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
   return (
     <>
       <ScrollProgressBar />
-      <nav className='fixed z-40 top-0 right-0 left-0 my-6 mx-8 sm:mx-6'>
+      <motion.nav className='fixed z-40 top-0 right-0 left-0 my-6 mx-8 sm:mx-6' initial={{ opacity: 0, y: -100 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, ease: 'linear', delay: 0.2 }} >
         <div className='max-w-6xl mx-auto flex items-center justify-between bg-primary-500/15 border border-primary-500/10 dark:bg-primary-300/15 dark:border-primary-300/10 backdrop-blur-2xl shadow-lg rounded-md shadow-2xl shadow-primary/15 px-6 py-4'>
 
           {/*leftside  navlinks  */}
-          <div className='lg:flex hidden items-center'>
+          <motion.div className='lg:flex hidden items-center' initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.8,
+                },
+              },
+            }}>
             {Data.navLinks.map((link) => {
               const IconLine = iconMap[link.iconLine];
               const IconFill = iconMap[link.iconFill];
               const isCurrent = activeSection === link.to.replace('#', '');
               return (
-                <button
+                <Link
                   key={link.id}
                   className={`text-2xl font-semibold mx-4 transition-all duration-300 ease-linear group relative cursor-pointer ${isCurrent
                     ? 'text-primary scale-110'
                     : 'text-primary/75 hover:text-primary hover:scale-110'
                     }`}
                 >
-                  <div className="relative w-6 h-6 flex items-center justify-center">
+                  <motion.div className="relative w-6 h-6 flex items-center justify-center" variants={{
+                    hidden: { opacity: 0, x: -50 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: { duration: 0.6, ease: "easeOut" },
+                    },
+                  }}>
                     <IconLine
                       className={`absolute inset-0 transition-all duration-300 ease-linear ${isCurrent ? 'opacity-0 scale-0' : 'group-hover:opacity-0 group-hover:scale-0 opacity-100 scale-100'
                         }`}
@@ -426,25 +487,50 @@ export const Navbar = () => {
                       className={`absolute inset-0 transition-all duration-300 ease-linear drop-shadow-[0_0_12px_rgba(var(--color-primary-rgb),.75)] ${isCurrent ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
                         }`}
                     />
-                  </div>
+                  </motion.div>
                   {/* Active indicator dot */}
                   <span className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary transition-all duration-300 ${isCurrent ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
                     }`} />
-                </button>
+                </Link>
               )
             })}
-          </div>
+          </motion.div>
 
           {/* middleside logo */}
-          <div className="lg:mx-auto me-auto text-black dark:text-white font-heading font-bold text-xl">
+          <motion.div key={isLarge ? "desktop" : "mobile"}
+
+            initial={{
+              opacity: 0,
+
+              // desktop: bottom -> position
+              y: isLarge ? 50 : 0,
+
+              // mobile: left -> position
+              x: isLarge ? 0 : -50,
+            }}
+
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+            }}
+
+            transition={{
+              duration: 0.7,
+              ease: [0.76, 0, 0.24, 1],
+              delay: 0.8,
+            }} className="lg:mx-auto me-auto text-black dark:text-white font-heading font-bold text-xl">
             <Link to="/"><img src={Logo} alt="Logo" className="w-8 h-8" /></Link>
-          </div>
+          </motion.div>
 
           {/* rightside */}
-          <div className='flex items-center sm:space-x-6 space-x-4'>
+          <motion.div variants={buttonContainer}
+            initial="hidden"
+            animate="visible" className='flex items-center sm:space-x-6 space-x-4'>
 
             {/* sidebar toggle button */}
-            <button
+            <motion.button
+              variants={buttonItem}
               onClick={() => {
                 setIsActive(true);
                 setIsLockScroll(true);
@@ -453,10 +539,10 @@ export const Navbar = () => {
               className='lg:hidden relative w-8 h-8 rounded-lg bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 z-50'
             >
               <RiMenu4Line className='text-primary text-2xl' />
-            </button>
+            </motion.button>
 
             {/* light-dark button */}
-            <button ref={buttonRef} onClick={handleThemeToggle} className=" relative w-8 h-8 rounded-lg bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
+            <motion.button variants={buttonItem} ref={buttonRef} onClick={handleThemeToggle} className=" relative w-8 h-8 rounded-lg bg-white/75 border border-white/75 dark:bg-primary/15 dark:border-white/15 flex items-center justify-center cursor-pointer backdrop-blur-2xl overflow-hidden dark:shadow-[0_0_25px_rgba(var(--color-primary-rgb),.25)] transition-all duration-500 "
             >
               <HiMoon
                 className={` absolute text-primary transition-all duration-500 text-2xl ${darkMode ? "rotate-[360deg] scale-0" : "rotate-0 scale-100"} `}
@@ -465,22 +551,24 @@ export const Navbar = () => {
               <HiSun
                 className={` absolute text-primary transition-all duration-500 text-2xl ${darkMode ? "rotate-[360deg] scale-100" : "rotate-0 scale-0"} `}
               />
-            </button>
+            </motion.button>
 
             {/* resume download button */}
-            <Button
-              variant="primary"
-              useCustomSize
-              icon={<LiaDownloadSolid className="text-lg sm:ms-2" />}
-              className='sm:px-6 sm:py-3 px-2 py-2 md:text-base text-sm sm:rounded-xl rounded-full'
-            >
-              <span className="sm:block hidden">
-                Resume / CV
-              </span>
-            </Button>
-          </div>
+            <motion.div variants={buttonItem}>
+              <Button
+                variant="primary"
+                useCustomSize
+                icon={<LiaDownloadSolid className="text-lg sm:ms-2" />}
+                className='sm:px-6 sm:py-3 px-2 py-2 md:text-base text-sm sm:rounded-xl rounded-full'
+              >
+                <span className="sm:block hidden">
+                  Resume / CV
+                </span>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
-      </nav>
+      </motion.nav>
 
       <AnimatePresence mode="wait">
         {isActive && (
