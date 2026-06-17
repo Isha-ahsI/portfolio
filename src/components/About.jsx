@@ -4,7 +4,7 @@ import Button from './ui/Button';
 import { useCountUp } from 'use-count-up';
 import { Data } from '../data/data';
 import { motion, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useCopyEmail } from "../hooks/useCopyEmail";
 import { FaEnvelope } from "react-icons/fa";
 import FullAvatar from '../assets/full-avatar.png';
 
@@ -54,6 +54,7 @@ export const About = () => {
         amount: 0.5,
     });
 
+    const { copied, copyEmail } = useCopyEmail();
 
 
     return (
@@ -113,17 +114,23 @@ export const About = () => {
                         </strong>
                         {" "}who creates modern, responsive, and user-friendly web experiences. I enjoy turning creative ideas into clean, interactive websites while continuously learning new technologies to build high-performance digital solutions.
                     </p>
-                    <div className='mt-4 flex flex-col md:items-start items-center'>
-                        <Link to="mailto:isha.makvane@gmail.com">
-                            <Button
-                                variant="light"
-                                icon={<FaEnvelope className="me-2" />}
-                                iconPosition="left"
-                                className='gap-2'
+                    <div className='mt-4 flex flex-col md:items-start items-center relative inline-block'>
+                        <Button
+                            onClick={() => copyEmail("ishamakvane@gmail.com")}
+                            variant="light"
+                            icon={<FaEnvelope className="me-2" />}
+                            iconPosition="left"
+                            className='gap-2'
+                        >
+                            Let's Talk
+                        </Button>
+                        {copied && (
+                            <span
+                                className=" absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-slate-950 text-white px-3 py-1 rounded whitespace-nowrap"
                             >
-                                Let's Talk
-                            </Button>
-                        </Link>
+                                Email copied!
+                            </span>
+                        )}
                     </div>
                 </motion.div>
             </div>

@@ -127,7 +127,7 @@ export const Project = () => {
 
                                         <div className="flex flex-col sm:flex-row gap-3 w-full mt-1">
                                             <Link
-                                                to={selectedProject.github}
+                                                to="https://github.com/Isha-ahsI"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="flex-1 w-full inline-flex items-center justify-center gap-1 rounded-lg text-base font-medium py-2 px-4 bg-white text-black border border-white transition-all duration-300 ease-linear hover:bg-gray-100 dark:border dark:border-white hover:scale-95 shadow-[0px_0px_8px_0_rgba(255,255,255,.25)]

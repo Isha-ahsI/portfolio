@@ -1,4 +1,5 @@
 import React from 'react'
+import { useCopyEmail } from "../hooks/useCopyEmail";
 import { SectionBadge } from './ui/SectionBadge'
 import Button from './ui/Button'
 import { FiArrowUpRight } from 'react-icons/fi'
@@ -7,6 +8,25 @@ import { Data } from '../data/data'
 import { motion } from 'framer-motion';
 
 export const ContactUs = () => {
+  const { copied, copyEmail } = useCopyEmail();
+
+
+  const handleClick = (item) => {
+
+    if (item.copy) {
+      copyEmail(item.value);
+      return;
+    }
+
+
+    if (item.href) {
+      window.open(
+        item.href,
+        item.external ? "_blank" : "_self"
+      );
+    }
+
+  };
   return (
     <>
       <section id="contact" className='relative overflow-hidden max-w-7xl mx-auto py-24 sm:px-6 sm:py-28 px-4'>
@@ -36,10 +56,11 @@ export const ContactUs = () => {
                   delay: 1.2 + item.id * 0.1,
                 }}>
                 <Link
+                  onClick={() => handleClick(item)}
                   to={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className={`group flex items-center gap-4 py-5 px-4 transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent ${index !== Data.contactLinks.length - 1
+                  className={`group flex items-center gap-4 py-5 px-4 transition-all duration-300 relative inline-flex hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent ${index !== Data.contactLinks.length - 1
                     ? 'border-b border-dark/10 dark:border-white/10'
                     : ''
                     }`}
@@ -58,6 +79,14 @@ export const ContactUs = () => {
                       {item.value}
                     </span>
                   </div>
+
+                  {item.copy && copied && (
+                    <span
+                      className=" absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-xs px-2 py-1 rounded"
+                    >
+                      Email Copied!
+                    </span>
+                  )}
                 </Link>
               </motion.div>
             ))}

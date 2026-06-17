@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useCopyEmail } from "../hooks/useCopyEmail";
 import Button from './ui/Button'
 import { Link } from 'react-router-dom'
 import GradientBlobs from './ui/GradientBlobs'
@@ -72,6 +73,8 @@ export const HeroSection = () => {
         () => window.innerWidth >= 1024
     );
 
+    const { copied, copyEmail } = useCopyEmail();
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -103,8 +106,9 @@ export const HeroSection = () => {
                         <motion.h1 variants={item(isLarge)} className='text-primary sm:text-6xl text-4xl font-bold lg:leading-16 tracking-wide'>Hey, I'm <br /> <span className='bg-gradient-to-b from-primary-500 to-primary-300 bg-clip-text text-transparent underline underline-offset-8'>Isha Makvane</span></motion.h1>
                         <motion.h2 variants={item(isLarge)} className='dark:text-light text-dark text-2xl mt-4 font-medium tracking-wide'>Web Designer & Developer</motion.h2>
                         <motion.p variants={item(isLarge)} className='dark:text-white/75 text-dark/75 md:text-lg text-base mt-4 '>Crafting modern, responsive, and visually engaging websites that deliver exceptional user experiences and elevate digital brands.</motion.p>
-                        <motion.div variants={item(isLarge)}>
+                        <motion.div variants={item(isLarge)} className='relative inline-block'>
                             <Button
+                                onClick={() => copyEmail("ishamakvane@gmail.com")}
                                 variant="outline"
                                 icon={<FaHandshake className="text-lg" />}
                                 iconPosition="left"
@@ -112,6 +116,13 @@ export const HeroSection = () => {
                             >
                                 Hire Me
                             </Button>
+                            {copied && (
+                                <span
+                                    className=" absolute -top-6 left-1/2 -translate-x-1/2 text-xs bg-slate-950 text-white px-3 py-1 rounded whitespace-nowrap"
+                                >
+                                    Email copied!
+                                </span>
+                            )}
                         </motion.div>
                     </motion.div>
                     {/* hero image */}

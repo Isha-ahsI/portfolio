@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Link } from "react-router-dom";
+import { useCopyEmail } from "../hooks/useCopyEmail";
 import Button from "../components/ui/button";
 import ScrollProgressBar from "../components/ui/ScrollProgressBar";
 import { ContactIcon } from '../components/ui/ContactIcon.jsx';
@@ -71,6 +72,25 @@ const buttonItem = {
 };
 
 const CustomFooter = () => {
+  const { copied, copyEmail } = useCopyEmail();
+
+
+  const handleClick = (link) => {
+
+    if (link.copy) {
+      copyEmail(link.value);
+      return;
+    }
+
+
+    if (link.href) {
+      window.open(
+        link.href,
+        link.external ? "_blank" : "_self"
+      );
+    }
+
+  };
   return (
     <div className="w-full px-10 md:px-12 py-8 border-t border-black/10 dark:border-white/10 transition-colors duration-500 flex sm:flex-row flex-col items-center sm:justify-between justify-center gap-4">
       {/* Left Side: Availability Status */}
@@ -88,7 +108,18 @@ const CustomFooter = () => {
       {/* Right Side: Social & Mail Icons */}
       <div className="flex items-center gap-3">
         {Data.contactLinks.map((link, index) => (
-          <ContactIcon key={index} to={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+          <div className='relative inline-block' key={index}  onClick={() => handleClick(link)}>
+              <ContactIcon href={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+              {
+                link.copy && copied && (
+                  <span
+                    className=" absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-xs px-2 py-1 rounded text-center"
+                  >
+                    Email Copied!
+                  </span>
+                )
+              }
+          </div>
         ))}
       </div>
     </div>

@@ -1,11 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useCopyEmail } from "../hooks/useCopyEmail";
 import { Data } from "../data/data.js";
 import { ContactIcon } from '../components/ui/ContactIcon.jsx';
 import Logo from "../assets/logo/logo.png";
 import { motion } from 'framer-motion';
 
 export const Footer = () => {
+    const { copied, copyEmail } = useCopyEmail();
+
+
+    const handleClick = (link) => {
+
+        if (link.copy) {
+            copyEmail(link.value);
+            return;
+        }
+
+
+        if (link.href) {
+            window.open(
+                link.href,
+                link.external ? "_blank" : "_self"
+            );
+        }
+
+    };
+
     return (
         <>
             <footer className='relative overflow-hidden border-t dark:border-light/15 border-dark/15 bg-gradient-to-b
@@ -30,6 +51,7 @@ dark:to-transparent'>
                             <div className='flex items-center justify-center gap-4'>
                                 {Data.contactLinks.map((link, index) => (
                                     <motion.div
+                                        onClick={() => handleClick(link)}
                                         key={index}
                                         initial={{
                                             opacity: 0,
@@ -44,19 +66,22 @@ dark:to-transparent'>
                                         viewport={{ once: true }}
                                         transition={{
                                             duration: 0.5,
-                                            delay:1.2+ index * 0.15,
+                                            delay: 1.2 + index * 0.15,
                                             type: "spring",
                                             stiffness: 200,
                                         }}
 
-                                        // hover jumping + stretching
-                                        whileHover={{
-                                            y: -12,
-                                            scale: 1.2,
-                                        }}
+                                        className='relative inline-block'
                                     >
 
-                                        <ContactIcon key={index} to={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+                                        <ContactIcon href={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+                                        {link.copy && copied && (
+                                            <span
+                                                className=" absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-xs px-2 py-1 rounded"
+                                            >
+                                                Email Copied!
+                                            </span>
+                                        )}
                                     </motion.div>
                                 ))}
                             </div>

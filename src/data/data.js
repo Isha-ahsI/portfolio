@@ -66,7 +66,6 @@ export const Data = {
             "title": "Koffuu",
             "description": "A modern café website showcasing artisanal brews, cozy vibes, and seamless online ordering.",
             "image": KoffuuImg,
-            "github": "https://github.com/",
             "live": "https://koffuu.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -107,7 +106,6 @@ export const Data = {
             "title": "Sivoci",
             "description": "Business growth-focused web platform built with modern UI and performance-driven design.",
             "image": Sivoci,
-            "github": "https://github.com/",
             "live": "https://sivoci.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -149,7 +147,6 @@ export const Data = {
             "title": "Interilu",
             "description": "A modern home interior website showcasing elegant, functional, and personalized living space designs.",
             "image": InteriluImg,
-            "github": "https://github.com/",
             "live": "https://interillu.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -185,7 +182,6 @@ export const Data = {
             "title": "Zeevra",
             "description": "Modern multipurpose web platform for seamless business and digital experiences.",
             "image": Zeevra,
-            "github": "https://github.com/",
             "live": "https://zeevra-gilt.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -221,7 +217,6 @@ export const Data = {
             "title": "Cryzeo",
             "description": "A secure and intuitive cryptocurrency platform for seamless digital asset tracking and trading.",
             "image": CryzeoImg,
-            "github": "https://github.com/",
             "live": "https://cryzeo.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -247,7 +242,6 @@ export const Data = {
             "title": "Golduu",
             "description": "A modern responsive jewelry portfolio website that beautifully showcases handcrafted designs and attracts customers.",
             "image": GolduuImg,
-            "github": "https://github.com/",
             "live": "https://golduu.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -268,7 +262,6 @@ export const Data = {
             "title": "Staffu",
             "description": "Staffu is CRM Dashboard that simplifies staff, customer, and workflow management in one intuitive interface.",
             "image": Staffu,
-            "github": "https://github.com/",
             "live": "https://staffu.vercel.app/",
             "type": "Dashboard",
             "technologies": [
@@ -304,7 +297,6 @@ export const Data = {
             "title": "E-commerce Platform",
             "description": "An online fashion store that enables customers to explore trendy apparel, manage their shopping cart, and complete purchases securely through an intuitive and user-friendly interface.",
             "image": EcommerceImg,
-            "github": "https://github.com/",
             "live": "https://e-commerce-ki.vercel.app/",
             "type": "Web",
             "technologies": [
@@ -454,22 +446,21 @@ export const Data = {
         {
             icon: LuMail,
             label: 'Email',
-            value: 'isha.makvane@gmail.com',
-            href: 'mailto:isha.makvane@gmail.com',
-            external: false,
+            value: 'ishamakvane@gmail.com',
+            copy: true,
         },
         {
             icon: LuLinkedin,
             label: 'LinkedIn',
-            value: 'linkedin.com/in/isha-makvane',
-            href: 'https://linkedin.com/in/isha-makvane',
+            value: 'linkedin.com/in/isha-makvane-299797360',
+            href: 'https://www.linkedin.com/in/isha-makvane-299797360',
             external: true,
         },
         {
             icon: LuGithub,
             label: 'GitHub',
-            value: 'github.com/isha-makvane',
-            href: 'https://github.com/isha-makvane',
+            value: 'github.com/Isha-ahsI',
+            href: 'https://github.com/Isha-ahsI',
             external: true,
         },
     ],
