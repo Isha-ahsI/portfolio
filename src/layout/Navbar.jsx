@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Link } from "react-router-dom";
 import { useCopyEmail } from "../hooks/useCopyEmail";
-import Button from "../components/ui/button";
+import Button from "../components/ui/Button";
 import ScrollProgressBar from "../components/ui/ScrollProgressBar";
 import { ContactIcon } from '../components/ui/ContactIcon.jsx';
 import { Data } from "../data/data.js";
