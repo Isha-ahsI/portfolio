@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+import emailjs from "@emailjs/browser";
 import { useCopyEmail } from "../hooks/useCopyEmail";
 import { SectionBadge } from './ui/SectionBadge'
 import Button from './ui/Button'
@@ -9,6 +10,38 @@ import { motion } from 'framer-motion';
 
 export const ContactUs = () => {
   const { copied, copyEmail } = useCopyEmail();
+  const formRef = useRef();
+  const [sent, setSent] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+
+    emailjs
+      .sendForm(
+        "service_sypcfxe",
+        "template_k45w5wl",
+        formRef.current,
+        {
+          publicKey: "LEt6-cZaI07rMP5F4",
+        }
+      )
+      .then(() => {
+
+        setSent(true);
+
+        formRef.current.reset();
+
+        setTimeout(() => {
+          setSent(false);
+        }, 2000);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  };
 
 
   const handleClick = (item) => {
@@ -96,24 +129,31 @@ export const ContactUs = () => {
 
           <motion.div className='rounded-2xl p-8 bg-primary border border-dark/15 dark:border-light/15 text-dark dark:text-light' initial={{ opacity: 0, x: 100 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: "linear" }} data-primary-bg>
             <h1 className='font-semibold text-2xl sm:text-2xl mb-2 text-white tracking-wide'>Send Message</h1>
-            <form className='flex flex-col gap-6'>
+            <form ref={formRef}
+              onSubmit={sendEmail} className='flex flex-col gap-6'>
               {/* Name */}
               <input
                 type='text'
+                name="user_name"
                 placeholder='Your Name'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 text-sm sm:text-base'
+                required
               />
               {/* Email */}
               <input
+                name="user_email"
                 type='email'
                 placeholder='Your Email'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 text-sm sm:text-base'
+                required
               />
               {/* Message */}
               <textarea
                 rows={4}
+                name="message"
                 placeholder='Your Message'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 resize-none text-sm sm:text-base'
+                required
               />
               {/* Send button */}
               <Button
@@ -125,6 +165,12 @@ export const ContactUs = () => {
               >
                 Send Message
               </Button>
+              {sent && (
+                <p>
+                  Message sent successfully
+                </p>
+              )}
+
             </form>
           </motion.div>
 
