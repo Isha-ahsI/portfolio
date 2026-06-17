@@ -10,7 +10,7 @@ import { IoCallOutline, IoCallSharp } from "react-icons/io5";
 import { RiUser3Line, RiUser3Fill, RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { HiSun, HiMoon } from "react-icons/hi2";
 import { LiaDownloadSolid } from "react-icons/lia";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import ShinyText from '@/components/ui/ShinyText';
 import Logo from "../assets/logo/logo.png"
 
@@ -143,32 +143,48 @@ const SidebarNavLink = ({ heading, to, iconLine, iconFill, setIsActive, isActive
 };
 
 const Curve = () => {
-  const [height, setHeight] = useState(typeof window !== "undefined" ? window.innerHeight : 800);
+  const [height, setHeight] = useState(800);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const handleResize = () => setHeight(window.innerHeight);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    setHeight(window.innerHeight);
   }, []);
 
-  const initialPath = `M100 0 L200 0 L200 ${height} L100 ${height} Q-100 ${height / 2} 100 0`;
-  const targetPath = `M100 0 L200 0 L200 ${height} L100 ${height} Q100 ${height / 2} 100 0`;
+  const initialPath =
+    `M100 0 
+ L200 0 
+ L200 ${height} 
+ L100 ${height} 
+ Q-100 ${height / 2} 100 0`;
+
+  const targetPath =
+    `M100 0 
+ L200 0 
+ L200 ${height} 
+ L100 ${height} 
+ Q100 ${height / 2} 100 0`;
 
   const curve = {
     initial: { d: initialPath },
     enter: {
       d: targetPath,
-      transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
+      transition: {
+        duration: 1,
+        ease: [0.76, 0, 0.24, 1]
+      }
     },
     exit: {
       d: initialPath,
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-    },
-  };
+      transition: {
+        duration: .8,
+        ease: [0.76, 0, 0.24, 1]
+      }
+    }
+  }
 
   return (
-    <svg className="absolute top-0 -left-[99px] w-[100px] stroke-none h-full fill-light backdrop-blur-xl dark:fill-slate-950 transition-colors duration-500">
+    <svg className="absolute top-0 -left-[99px] w-[100px]  overflow-visible
+      pointer-events-none
+      z-[-1] h-full fill-light dark:fill-slate-950 transition-colors duration-500">
       <motion.path
         variants={curve}
         initial="initial"
@@ -199,7 +215,7 @@ const CurvedNavbar = ({ setIsActive, navItems, footer, activeSection, onNavigate
         initial="initial"
         animate="enter"
         exit="exit"
-        className="lg:hidden h-[100dvh] w-screen max-w-screen-sm fixed right-0 top-0 z-50  overflow-y-auto bg-light backdrop-blur-xl dark:bg-slate-950 text-black dark:text-white shadow-2xl border-l border-black/10 dark:border-white/10 transition-colors duration-500"
+        className="lg:hidden h-[100dvh] w-screen max-w-screen-sm fixed right-0 top-0 z-50 bg-light dark:bg-slate-950 text-black dark:text-white shadow-2xl border-l border-black/10 dark:border-white/10 transition-colors duration-500"
       >
         {/* Close Button */}
         <button
@@ -283,27 +299,27 @@ export const Navbar = () => {
 
   // IntersectionObserver to track active section
   useEffect(() => {
-  const sections = document.querySelectorAll("section[id]");
+    const sections = document.querySelectorAll("section[id]");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
 
-          setActiveSection(sectionMap[id] || id);
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
+            setActiveSection(sectionMap[id] || id);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
 
-  sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
 
   // Dark mode toggle
