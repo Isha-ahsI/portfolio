@@ -356,7 +356,7 @@ export const Navbar = () => {
           block: "start",
         });
       }
-    }, 800);
+    },50);
   };
 
   // IntersectionObserver to track active section
@@ -497,6 +497,7 @@ export const Navbar = () => {
               return (
                 <Link
                   key={link.id}
+                  onClick={() => scrollToSection(link.to)}
                   className={`text-2xl font-semibold mx-4 transition-all duration-300 ease-linear group relative cursor-pointer ${isCurrent
                     ? 'text-primary scale-110'
                     : 'text-primary/75 hover:text-primary hover:scale-110'
