@@ -102,18 +102,21 @@ export const ContactUs = () => {
                 type='text'
                 placeholder='Your Name'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 text-sm sm:text-base'
+                required
               />
               {/* Email */}
               <input
                 type='email'
                 placeholder='Your Email'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 text-sm sm:text-base'
+                 required
               />
               {/* Message */}
               <textarea
                 rows={4}
                 placeholder='Your Message'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 resize-none text-sm sm:text-base'
+                 required
               />
               {/* Send button */}
               <Button
