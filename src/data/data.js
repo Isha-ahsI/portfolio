@@ -354,8 +354,7 @@ export const Data = {
             "name": "HTML",
             "icon": html,
             "hashcolor": "#FF6900",
-            "color": "bg-orange-500",
-            "category": "Frontend",
+            "color": "bg-orange-500",           
             "value": 96
         },
         {
@@ -363,8 +362,7 @@ export const Data = {
             "name": "CSS",
             "icon": css,
             "hashcolor": "#00A6F4",
-            "color": "bg-sky-500",
-            "category": "Frontend",
+            "color": "bg-sky-500",           
             "value": 96
         },
         {
@@ -372,8 +370,7 @@ export const Data = {
             "name": "JavaScript",
             "icon": js,
             "hashcolor": "#FFDF20",
-            "color": "bg-yellow-400",
-            "category": "Frontend",
+            "color": "bg-yellow-400",          
             "value": 75
         },
         {
@@ -381,8 +378,7 @@ export const Data = {
             "name": "Bootstrap",
             "icon": bootstrap,
             "hashcolor": "#8E51FF",
-            "color": "bg-violet-500",
-            "category": "Frontend",
+            "color": "bg-violet-500",          
             "value": 95
         },
         {
@@ -390,8 +386,7 @@ export const Data = {
             "name": "React",
             "icon": react,
             "hashcolor": "#00B8DB",
-            "color": "bg-cyan-500",
-            "category": "Frontend",
+            "color": "bg-cyan-500",           
             "value": 75
         },
         {
@@ -399,8 +394,7 @@ export const Data = {
             "name": "React Bootstrap",
             "icon": reactbootstrap,
             "hashcolor": "#00D3F2",
-            "color": "bg-cyan-400",
-            "category": "Frontend",
+            "color": "bg-cyan-400",  
             "value": 85
         },
         {
@@ -409,7 +403,6 @@ export const Data = {
             "icon": tailwindcss,
             "hashcolor": "#0092B8",
             "color": "bg-cyan-600",
-            "category": "Frontend",
             "value": 85
         },
         {
@@ -418,7 +411,6 @@ export const Data = {
             "icon": sass,
             "hashcolor": "#FB64B6",
             "color": "bg-pink-400",
-            "category": "Frontend",
             "value": 85
         },
         {
@@ -427,7 +419,6 @@ export const Data = {
             "icon": gulp,
             "hashcolor": "#FF6467",
             "color": "bg-red-400",
-            "category": "Frontend",
             "value": 85
         },
         {
@@ -436,7 +427,6 @@ export const Data = {
             "icon": MongoDb,
             "hashcolor": "#4DB33D",
             "color": "bg-green-500",
-            "category": "Backend",
             "value": 60
         },
 

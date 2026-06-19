@@ -44,7 +44,7 @@ export const Skill = () => {
                                     />
                                 </div>
                                 <h1 className='font-bold text-lg sm:text-xl mt-2 text-dark dark:text-light'>{item.name}</h1>
-                                <p className='text-sm mt-0.5 text-dark/75 dark:text-light/75'>{item.category}</p>
+                                {/* <p className='text-sm mt-0.5 text-dark/75 dark:text-light/75'>{item.category}</p> */}
                                 <Progress value={item.value} color={item.color} className="w-50 mt-3" />
                             </SpotlightCard>
                         </motion.div>

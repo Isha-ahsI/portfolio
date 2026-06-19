@@ -4,7 +4,8 @@ import Button from './ui/Button'
 import { Link } from 'react-router-dom'
 import GradientBlobs from './ui/GradientBlobs'
 import { ParticleBg } from '../components/ui/ParticleBg'
-import { FaHandshake } from "react-icons/fa";
+import { FaHandshake, FaCode } from "react-icons/fa";
+import { TbDevicesCode } from "react-icons/tb";
 import Avatar from "../assets/avatar.png"
 import { motion } from 'framer-motion';
 import { SectionBadge } from './ui/SectionBadge';
@@ -133,6 +134,28 @@ export const HeroSection = () => {
                             <motion.img variants={scaleItem} src={Avatar} alt="avatar" className='origin-bottom h-full w-full relative z-20' />
                             <motion.div variants={scaleItem} className="absolute z-10 top-0 left-0 rounded-lg h-full w-full border border-dashed border-dark/50 dark:border-light/50 bg-transparent -ml-6 -mt-6"></motion.div>
                             <motion.div variants={scaleItem} className="absolute z-0 h-full w-full bg-primary/10 rounded-lg backdrop-blur-sm top-0 left-0 ml-6 mt-6"></motion.div>
+                            <motion.div className='w-12 h-12 bg-white/75 backdrop-blur-xs rounded-lg text-primary flex items-center justify-center absolute z-30 -left-4 top-3/4 -rotate-12'
+                                animate={{
+                                    rotate: [-12, 0, 12, 0, -12],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}>
+                                <FaCode className='text-2xl' />
+                            </motion.div>
+                            <motion.div className='w-12 h-12 bg-white/75 backdrop-blur-xs rounded-lg text-primary flex items-center justify-center absolute z-30 -right-4 bottom-3/4 rotate-12' animate={{
+                                rotate: [12, 0, -12, 0, 12],
+                            }}
+                                transition={{
+                                    delay: 0.2,
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}>
+                                <TbDevicesCode className='text-2xl' />
+                            </motion.div>
                         </motion.div>
                     </motion.div>
                 </div>
