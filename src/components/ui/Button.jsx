@@ -83,7 +83,7 @@ const Button = forwardRef(({
         >
             {(variant === "primary" || variant === "light") ? (
                 <div className="relative overflow-hidden">
-                    <div className="flex items-center group-hover:-translate-y-7 transition-all duration-150 ease-in-out">
+                    <div className="flex items-center group-hover:-translate-y-7 transition-all duration-300 ease-linear">
 
                         {iconPosition === "left" && icon}
 
@@ -92,7 +92,7 @@ const Button = forwardRef(({
                         {iconPosition === "right" && icon}
                     </div>
 
-                    <div className="absolute top-7 left-0 flex items-center group-hover:top-0 transition-all duration-150 ease-in-out">
+                    <div className="absolute top-7 left-0 flex items-center group-hover:top-0 transition-all duration-300 ease-linear">
 
                         {iconPosition === "left" && icon}
 
