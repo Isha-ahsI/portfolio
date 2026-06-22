@@ -23,6 +23,7 @@ const cardVariants = isDesktop
                 duration: 0.8,
                 ease: "linear",
                 staggerChildren: 0.15,
+                delayChildren: 0.6,
             },
         },
     }
@@ -39,10 +40,16 @@ const cardVariants = isDesktop
             transition: {
                 duration: 0.6,
                 ease: "easeOut",
-                staggerChildren: 0.1,
+                staggerChildren: 0.15,
+                delayChildren: 0.6,
             },
         },
     };
+
+const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 
 export const About = () => {
@@ -92,29 +99,28 @@ export const About = () => {
                     variants={cardVariants}
                     className="md:z-10 md:absolute md:start-70 rounded-2xl md:pl-16 md:pr-8 md:px-10 p-8 border border-dark/20 dark:border-white/20 bg-primary backdrop-blur-md shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.2)] md:text-start text-center"
                     data-primary-bg>
-                    <div>
+                    <motion.div variants={childVariants}>
                         <SectionBadge text="About Me" bgColor="bg-white/25 border border-white/25 backdrop-blur-2xl text-primary" className="text-white" color="#000000" shineColor="#ffffff" />
-                    </div>
-                    <h2 className="font-[900] text-2xl sm:text-4xl uppercase tracking-wider text-white mb-2">
+                    </motion.div>
+                    <motion.h2 variants={childVariants} className="font-[900] text-2xl sm:text-4xl uppercase tracking-wider text-white mb-2">
                         Get To Know Me!
-                    </h2>
-                    <div className="md:hidden flex justify-center mb-6">
-                        <motion.img
+                    </motion.h2>
+                    <motion.div variants={childVariants} className="md:hidden flex justify-center mb-6">
+                        <img
                             src={FullAvatar}
                             alt="Isha Makvane"
                             className="max-h-[400px] drop-shadow-[0_8px_16px_rgba(255,255,255,0.5)]"
-                            initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "linear" }}
                         />
-                    </div>
+                    </motion.div>
 
-                    <p className="text-white/75 dark:text-white/75 leading-relaxed">
+                    <motion.p variants={childVariants} className="text-white/75 dark:text-white/75 leading-relaxed">
                         I'm a passionate
                         <strong className="text-dark">
                             {" "}Web Designer and Frontend Developer
                         </strong>
                         {" "}who creates modern, responsive, and user-friendly web experiences. I enjoy turning creative ideas into clean, interactive websites while continuously learning new technologies to build high-performance digital solutions.
-                    </p>
-                    <div className='mt-4 flex flex-col md:items-start items-center relative inline-block'>
+                    </motion.p>
+                    <motion.div variants={childVariants} className='mt-4 flex flex-col md:items-start items-center relative inline-block'>
                         <Button
                             onClick={() => copyEmail("ishamakvane@gmail.com")}
                             variant="light"
@@ -131,7 +137,7 @@ export const About = () => {
                                 Email copied!
                             </span>
                         )}
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
             <div className="relative grid grid-cols-3 w-full mt-8 pt-6" ref={statsRef}>

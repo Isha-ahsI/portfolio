@@ -52,7 +52,7 @@ export const ContactUs = () => {
                 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.8,
+                  duration: 0.6,
                   delay: 1.2 + item.id * 0.1,
                 }}>
                 <Link
@@ -94,41 +94,59 @@ export const ContactUs = () => {
 
           {/* right: primary bg contact detail card */}
 
-          <motion.div className='rounded-2xl p-8 bg-primary border border-dark/15 dark:border-light/15 text-dark dark:text-light' initial={{ opacity: 0, x: 100 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: "linear" }} data-primary-bg>
-            <h1 className='font-semibold text-2xl sm:text-2xl mb-2 text-white tracking-wide'>Send Message</h1>
-            <form className='flex flex-col gap-6'>
+          <motion.div 
+            className='rounded-2xl p-8 bg-primary border border-dark/15 dark:border-light/15 text-dark dark:text-light' 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }} 
+            variants={{
+              hidden: { opacity: 0, x: 100 },
+              visible: { 
+                opacity: 1, 
+                x: 0, 
+                transition: { duration: 1, ease: "linear", staggerChildren: 0.15, delayChildren: 1 } 
+              }
+            }} 
+            data-primary-bg>
+            <motion.h1 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className='font-semibold text-2xl sm:text-2xl mb-2 text-white tracking-wide'>Send Message</motion.h1>
+            <motion.form className='flex flex-col gap-6' variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}>
               {/* Name */}
-              <input
+              <motion.input
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 type='text'
                 placeholder='Your Name'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 text-sm sm:text-base'
                 required
               />
               {/* Email */}
-              <input
+              <motion.input
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 type='email'
                 placeholder='Your Email'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 text-sm sm:text-base'
                  required
               />
               {/* Message */}
-              <textarea
+              <motion.textarea
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 rows={4}
                 placeholder='Your Message'
                 className='bg-transparent border-b border-white/30 text-white placeholder:font-light placeholder:text-white/65 py-3 px-1 outline-none focus:border-white transition-colors duration-300 resize-none text-sm sm:text-base'
                  required
               />
               {/* Send button */}
-              <Button
-                type='submit'
-                variant='light'
-                icon={<FiArrowUpRight className='text-lg ms-2 transition-transform duration-300 group-hover:rotate-45' />}
-                iconPosition='right'
-                className='mt-2 w-full'
-              >
-                Send Message
-              </Button>
-            </form>
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                <Button
+                  type='submit'
+                  variant='light'
+                  icon={<FiArrowUpRight className='text-lg ms-2 transition-transform duration-300 group-hover:rotate-45' />}
+                  iconPosition='right'
+                  className='mt-2 w-full'
+                >
+                  Send Message
+                </Button>
+              </motion.div>
+            </motion.form>
           </motion.div>
 
         </div>

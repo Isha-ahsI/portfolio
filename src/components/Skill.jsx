@@ -25,7 +25,7 @@ export const Skill = () => {
                         <motion.div key={item.id} initial={{
                             opacity: 0,
                             scale: 0.25
-                            }}
+                        }}
                             whileInView={{
                                 opacity: 1,
                                 scale: 1
@@ -36,16 +36,18 @@ export const Skill = () => {
                                 delay: item.id * 0.1,
                             }}>
                             <SpotlightCard borderColor={item.hashcolor} spotlightColor={item.hashcolor}>
-                                <div className="flex flex-col items-center justify-center">
+                                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: item.id * 0.1 + 0.6 }} className="flex flex-col items-center justify-center">
                                     <img
                                         src={item.icon}
                                         alt={item.name}
                                         className="w-10 h-10 object-cover"
                                     />
-                                </div>
-                                <h1 className='font-bold text-lg sm:text-xl mt-2 text-dark dark:text-light'>{item.name}</h1>
+                                </motion.div>
+                                <motion.h1 initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: item.id * 0.1 + 0.6 }} className='font-bold text-lg sm:text-xl mt-2 text-dark dark:text-light'>{item.name}</motion.h1>
                                 {/* <p className='text-sm mt-0.5 text-dark/75 dark:text-light/75'>{item.category}</p> */}
-                                <Progress value={item.value} color={item.color} className="w-50 mt-3" />
+                                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: item.id * 0.1 + 0.7 }} className="w-full">
+                                    <Progress value={item.value} color={item.color} className="w-50 mt-3" />
+                                </motion.div>
                             </SpotlightCard>
                         </motion.div>
                     ))}
