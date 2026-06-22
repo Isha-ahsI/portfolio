@@ -1,26 +1,16 @@
-
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa6";
 
 export default function ScrollProgressBar() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener("scroll", updateScrollProgress);
-
-    return () =>
-      window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
+  const { scrollYProgress } = useScroll();
+  
+  // Optional: add a spring physics to the progress for an even smoother feeling
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -31,15 +21,16 @@ export default function ScrollProgressBar() {
 
   const radius = 28;
   const circumference = 2 * Math.PI * radius;
-  const offset =
-    circumference - (scrollProgress / 100) * circumference;
+  
+  // Transform progress (0 to 1) into dash offset (circumference to 0)
+  const strokeDashoffset = useTransform(smoothProgress, [0, 1], [circumference, 0]);
 
   return (
     <motion.div className="fixed bottom-6 right-6 z-50" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: 'linear', delay: 1 }}>
       <button
         onClick={scrollToTop}
         className="relative flex h-14 w-14 items-center justify-center rounded-full cursor-pointer
-             hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+             hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.6)]
              transition-all duration-300 ease-linear"
       >
         <svg
@@ -57,7 +48,7 @@ export default function ScrollProgressBar() {
           />
 
           {/* Progress Circle */}
-          <circle
+          <motion.circle
             cx="32"
             cy="32"
             r={radius}
@@ -65,10 +56,9 @@ export default function ScrollProgressBar() {
             className="stroke-primary"
             strokeWidth="4"
             strokeDasharray={circumference}
-            strokeDashoffset={offset}
             strokeLinecap="round"
             style={{
-              transition: "stroke-dashoffset 150ms ease",
+              strokeDashoffset
             }}
           />
         </svg>
