@@ -13,7 +13,8 @@ import { HiSun, HiMoon } from "react-icons/hi2";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { motion, AnimatePresence } from "framer-motion";
 import ShinyText from '@/components/ui/ShinyText';
-import Logo from "../assets/logo/logo.png"
+import Logo from "../assets/logo/logo.png";
+import resumePdf from "../assets/cv.pdf";
 
 const iconMap = {
   homeLine: AiOutlineHome,
@@ -108,17 +109,17 @@ const CustomFooter = () => {
       {/* Right Side: Social & Mail Icons */}
       <div className="flex items-center gap-3">
         {Data.contactLinks.map((link, index) => (
-          <div className='relative inline-block' key={index}  onClick={() => handleClick(link)}>
-              <ContactIcon href={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
-              {
-                link.copy && copied && (
-                  <span
-                    className=" absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-xs px-2 py-1 rounded text-center"
-                  >
-                    Email Copied!
-                  </span>
-                )
-              }
+          <div className='relative inline-block' key={index} onClick={() => handleClick(link)}>
+            <ContactIcon href={link.href} external={link.external} icon={<link.icon className="md:text-lg text-base" />} />
+            {
+              link.copy && copied && (
+                <span
+                  className=" absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-950 text-white text-xs px-2 py-1 rounded text-center"
+                >
+                  Email Copied!
+                </span>
+              )
+            }
           </div>
         ))}
       </div>
@@ -356,7 +357,7 @@ export const Navbar = () => {
           block: "start",
         });
       }
-    },50);
+    }, 50);
   };
 
   // IntersectionObserver to track active section
@@ -470,6 +471,14 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = resumePdf; // This automatically gets the correct path to the file in src/assets
+    link.download = "isha_makvane_cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -590,6 +599,7 @@ export const Navbar = () => {
               <Button
                 variant="primary"
                 useCustomSize
+                onClick={handleDownloadResume}
                 icon={<LiaDownloadSolid className="text-lg sm:ms-2" />}
                 className='sm:px-6 sm:py-3 px-2 py-2 md:text-base text-sm sm:rounded-xl rounded-full'
               >
