@@ -39,11 +39,13 @@
 
 }
 
+html,
 body {
   @apply bg-white dark:bg-slate-950 transition-colors duration-300 font-body font-normal;
+  overflow-x: hidden;
 }
 
-*{
+* {
   cursor: none;
 }
 
