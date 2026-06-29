@@ -17,7 +17,7 @@ const container = {
     show: {
         transition: {
             staggerChildren: 0.15,
-            delayChildren: 1,
+            delayChildren: 0.8,
         },
     },
 };
@@ -35,7 +35,7 @@ const item = (isLarge) => ({
         x: 0,
         y: 0,
         transition: {
-            duration: 0.8,
+            duration: 0.6,
             ease: "linear",
         },
     },
