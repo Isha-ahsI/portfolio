@@ -16,6 +16,7 @@ import reactbootstrap from "../assets/skills/react-bootstrap.png";
 import sass from "../assets/skills/sass.png";
 import tailwindcss from "../assets/skills/tailwind-css.png";
 import MongoDb from "../assets/skills/mongodb.png";
+import Python from "../assets/skills/python.png";
 import {
     FaHtml5,
     FaJs,
@@ -429,6 +430,14 @@ export const Data = {
             "color": "bg-green-500",
             "value": 60
         },
+        {
+            "id": 11,
+            "name": "Python",
+            "icon": Python,
+            "hashcolor": "#024A70",
+            "color": "bg-blue-500",
+            "value": 60
+        }
 
 
     ],
