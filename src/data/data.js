@@ -438,8 +438,6 @@ export const Data = {
             "color": "bg-blue-500",
             "value": 60
         }
-
-
     ],
     "contactLinks": [
         {
