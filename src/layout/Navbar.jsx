@@ -561,7 +561,7 @@ export const Navbar = () => {
               ease: [0.76, 0, 0.24, 1],
               delay: 0.8,
             }} className="lg:mx-auto me-auto text-black dark:text-white font-heading font-bold text-xl">
-            <Link to="/"><img src={Logo} alt="Logo" className="w-8 h-8" /></Link>
+            <Link to="/"><img src={Logo} alt="Logo" className="w-10 h-10" /></Link>
           </motion.div>
 
           {/* rightside */}
